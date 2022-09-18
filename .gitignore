@@ -60,3 +60,6 @@ crashlytics-build.properties
 
 # Ignore UserSettings folder
 /[Uu]serSettings/
+
+# Ignore .idea in case someone is using Rider
+.idea/
