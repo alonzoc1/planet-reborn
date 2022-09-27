@@ -10,4 +10,5 @@ TO-DO LIST
 - [X] Set up a local version of the project that's pushable to a secondary branch.
 - [X] Set up basic landscaping tools that's needed for creating different segments of a level.
 - [X] Add cinemachine and a few other useful tools from Unity. It should make it a lot easier to work on the animation/rigging portion of the project.
+- [X] Lock the mouse to the center of the screen.
 - [ ] Migrate to the latest LTS version and fix any small inconsistences.
