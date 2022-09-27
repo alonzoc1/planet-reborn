@@ -1,5 +1,5 @@
-# planet-reborn
-Our group project for CS 583, made with Unity
+# Planet Reborn - CS583 Game Programming
+Our group project for CS 583, made with Unity.
 
 Branching away from the main to test some features.
 I highly recommend that any changes made here should NOT be pushed into the main branch.
