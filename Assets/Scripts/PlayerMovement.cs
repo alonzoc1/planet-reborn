@@ -6,14 +6,14 @@ public class PlayerMovement : MonoBehaviour
 {
     private float turnSmoothVelocity;
     public CharacterController controller; // The motor that drives the player.
-    public float speed = 6.0f;
+    public float speed = 6.0f; // Adjust the speed as needed. May relegate this to a private variable.
     public float turnSmoothTime = 0.1f;
     public Transform cam;
 
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked; // Lock the mouse cursor when playing!
     }
 
     // Update is called once per frame
@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward; // Takes into account of the camera rotation.
-            controller.Move(moveDir.normalized * speed * Time.deltaTime);
+            controller.Move(moveDir.normalized * speed * Time.deltaTime); // Takes into account the Vector3 variable for where the player should move. Defaulting it to just 'direction' will make the controls very janky.
         }
     }
 }
