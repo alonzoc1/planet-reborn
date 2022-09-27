@@ -8,3 +8,4 @@ TO-DO LIST
 - [ ] Set up basic player movement.
 - [ ] Set up the third person player camera.
 - [X] Set up a local version of the project that's pushable to a secondary branch.
+- [ ] Draw some concept art for ability icons
