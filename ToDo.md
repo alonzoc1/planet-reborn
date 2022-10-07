@@ -1,5 +1,5 @@
 Branching away from the main to test some features.
-I highly recommend that any changes made here should NOT be pushed into the main branch, until I make a 'release' version of some sort.
+This to-do list is a way for me to keep track of the things I've completed overtime.
 
 Ethan's personal TO-DO LIST
 - [X] Set up basic player movement.
