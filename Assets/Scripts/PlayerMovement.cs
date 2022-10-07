@@ -27,8 +27,8 @@ public class PlayerMovement : MonoBehaviour
         {
             //We can use the Atan 2 function to get the angle of the x-axis, but assumes that we start at 0 degrees.
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y; // Allows the player to rotate. Do not get rid of this variable, as variable angle is dependent on this.
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime); // Helps smooth out player rotation.
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime); // Helps smooth out player rotation. Also needed for player rotation.
+            transform.rotation = Quaternion.Euler(0f, angle, 0f); // Have the player rotate, based on where the player/camera is moving.
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward; // Takes into account of the camera rotation.
             controller.Move(moveDir.normalized * speed * Time.deltaTime); // Takes into account the Vector3 variable for where the player should move. Defaulting it to just 'direction' will make the controls very janky.
