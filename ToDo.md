@@ -1,4 +1,4 @@
-Branching away from the main to test some features. 
+Branching away from the main to test some features.
 This to-do list is a way for me to keep track of the things I've completed overtime.
 
 Ethan's personal TO-DO LIST
