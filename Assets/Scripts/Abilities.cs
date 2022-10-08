@@ -10,7 +10,7 @@ public class Abilities : MonoBehaviour {
     public GameObject energyBurst;
     
     public GameObject GetAbilityGameObject(PlayerAbilities.AllAbilities ability) {
-        // This is faster than doing a GameObject.Find, but requires a little more maintanence
+        // This is faster than doing a GameObject.Find, but requires a little more maintenance
         switch (ability) {
             case PlayerAbilities.AllAbilities.EnergyBurst:
                 return energyBurst;
