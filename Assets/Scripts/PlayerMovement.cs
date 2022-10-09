@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public GameObject player;
-    private float turnSmoothVelocity;
-    private PlayerStats playerStats; // Declare the gameObject playerStats, but reference our C# script.
     public CharacterController controller; // The motor that drives the player.
     public float turnSmoothTime = 0.1f;
     public Transform cam;
+    
+    private float turnSmoothVelocity;
+    private PlayerStats playerStats;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        playerStats = player.GetComponent<PlayerStats>(); // Allow us to connect the PlayerStats.cs script, rather than shoving it in here. We're going to need this, in the event we link stuff here.
         Cursor.lockState = CursorLockMode.Locked; // Lock the mouse cursor when playing!
+        playerStats = gameObject.GetComponent<PlayerStats>();
     }
 
     // Update is called once per frame
@@ -33,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, angle, 0f); // Have the player rotate, based on where the player/camera is moving.
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward; // Takes into account of the camera rotation.
-            controller.Move(moveDir.normalized * playerStats.movementSpeed * Time.deltaTime); // Takes into account the Vector3 variable for where the player should move. Defaulting it to just 'direction' will make the controls very janky.
+            controller.Move(moveDir.normalized * (playerStats.movementSpeed * Time.deltaTime)); // Takes into account the Vector3 variable for where the player should move. Defaulting it to just 'direction' will make the controls very janky.
         }
     }
 }
