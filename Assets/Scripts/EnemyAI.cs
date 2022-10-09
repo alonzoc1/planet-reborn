@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -23,8 +25,10 @@ public class EnemyAI : MonoBehaviour
     public float projectileArc;
     [Tooltip("The speed the projectile is shot at")]
     public float projectileSpeed;
-    private void Awake()
-    {
+    private Dictionary<PlayerAbilities.AllAbilities, int> recentDamageTaken;
+    
+    private void Awake() {
+        recentDamageTaken = new Dictionary<PlayerAbilities.AllAbilities, int>();
         player = GameObject.Find("Player").transform;
         enemy = GetComponent<NavMeshAgent>();
         stats = GetComponent<EnemyStats>();
@@ -92,6 +96,28 @@ public class EnemyAI : MonoBehaviour
     {
         isAttacking = false;
     }
+    
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (!collision.gameObject.CompareTag("DamageSource"))
+            return;
+        
+        AbilityTools abilityTools = collision.gameObject.GetComponent<AbilityTools>();
+        if (!CanTakeDamageFromSource(abilityTools))
+            return;
+        
+        TakeDamage(abilityTools.damage);
+        recentDamageTaken[abilityTools.abilityName] = abilityTools.activationId;
+    }
+
+    private bool CanTakeDamageFromSource(AbilityTools abilityTools) {
+        if (!abilityTools.hitsOnlyOnce)
+            return true;
+        // If we're getting hit by the same instance of the same ability, ignore it
+        return !(recentDamageTaken.ContainsKey(abilityTools.abilityName) &&
+                recentDamageTaken[abilityTools.abilityName] == abilityTools.activationId);
+    }
+
     // Isn't used at the moment but serves to reduce the enemy's health
     public void TakeDamage(int damage)
     {
