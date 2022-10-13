@@ -31,7 +31,6 @@ public class PlayerMovement : MonoBehaviour
         // If user is moving
         if (direction.magnitude >= 0.1f)
         {
-            
             //We can use the Atan 2 function to get the angle of the x-axis, but assumes that we start at 0 degrees.
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y; // Allows the player to rotate. Do not get rid of this variable, as variable angle is dependent on this.
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime); // Helps smooth out player rotation. Also needed for player rotation.
@@ -47,12 +46,7 @@ public class PlayerMovement : MonoBehaviour
         
 
     }
-
-    /// <summary>
-    /// Add jump movement to a movement vector
-    /// </summary>
-    /// <param name="moveDir"></param>
-    /// <returns></returns>
+    
     private Vector3 HandleJumpMovement(Vector3 moveDir) {
         // moveDir should already be normalized and player speed should be factored in already
         // Reset jump velocity when we hit ground
