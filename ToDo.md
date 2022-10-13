@@ -1,7 +1,7 @@
 Branching away from the main to test some features.
-This to-do list is a way for me to keep track of the things I've completed overtime.
+I highly recommend that any changes made here should NOT be pushed into the main branch, until I make a 'release' version of some sort.
 
-Ethan's personal TO-DO LIST
+TO-DO LIST
 - [X] Set up basic player movement.
 - [X] Set up the third person player camera.
 - [X] Set up a local version of the project that's pushable to a secondary branch.
@@ -10,6 +10,4 @@ Ethan's personal TO-DO LIST
 - [X] Lock the mouse to the center of the screen when playing.
 - [X] Migrate to the latest LTS version and fix any small inconsistences. I won't be add anymore features until we're set on which LTS engine we're going to use for Unity.
 - [X] Fix the camera bug where the mouse moves the camera the opposite direction.
-- [ ] Add base stats for the player character. Possibly have the player and the stats be separated, BUT interconnected.
-- [X] Attach the player stats to the player character.
-- [ ] Have the player take damage from an environmental source to test some programming logic, regarding the HP.
+- [ ] Add base stats for the player character. Possibly need typedef struct?

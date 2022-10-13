@@ -15,7 +15,5 @@ public class BaseStats : MonoBehaviour {
     
     public float movementSpeed = 5.0f;
     public int health = 100;
-    public float jumpPower = 5.0f;
-    public float gravity = 9.81f;
     public State state = State.Normal;
 }

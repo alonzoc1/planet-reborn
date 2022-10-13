@@ -17,6 +17,7 @@ public class PlayerAbilities : MonoBehaviour
     private GameObject primaryAbilityObj; // GameObject containing any effects/colliders/etc of the primary ability
     private GameObject secondaryAbilityObj; // Same as above but for secondary ability
     private Abilities abilities; // Reference to Abilities script
+    private bool abilitiesDisabled;
 
     private void Start() {
         // Note: We use the Abilities script to get the GameObject references since it is both:
@@ -25,9 +26,12 @@ public class PlayerAbilities : MonoBehaviour
         abilities = gameObject.GetComponentInChildren<Abilities>();
         primaryAbilityObj = abilities.GetAbilityGameObject(primaryAbility);
         secondaryAbilityObj = abilities.GetAbilityGameObject(secondaryAbility);
+        abilitiesDisabled = false;
     }
 
     private void Update() {
+        if (abilitiesDisabled)
+            return;
         if (Input.GetKeyDown(KeyCode.Mouse0)) // Activate left click ability
             ActivateAbility(primaryAbility, primaryAbilityObj);
         else if (Input.GetKeyDown(KeyCode.Mouse1)) // Activate right click ability
@@ -45,15 +49,20 @@ public class PlayerAbilities : MonoBehaviour
         }
     }
 
-    IEnumerator EnableForTime(float time, GameObject target) {
+    IEnumerator EnableForTime(float time, GameObject target, AbilityTools tools) {
         // Activate object for some set time
         if (!target.activeInHierarchy)
+        {
+            abilitiesDisabled = true;
             target.SetActive(true);
-        yield return new WaitForSeconds(time);
+            tools.IncrementActivationId();
+            yield return new WaitForSeconds(time);
+        }
+        abilitiesDisabled = false;
         target.SetActive(false);
     }
     
     private void EnergyBurst(GameObject abilityObject) {
-        StartCoroutine(EnableForTime(2.0f, abilityObject));
+        StartCoroutine(EnableForTime(2.0f, abilityObject, abilityObject.GetComponent<AbilityTools>()));
     }
 }
