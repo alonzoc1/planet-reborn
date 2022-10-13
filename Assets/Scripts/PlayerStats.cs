@@ -6,5 +6,5 @@ using UnityEngine;
 /// <c>PlayerStats</c> Inherits from BaseStats, used for player character
 /// </summary>
 public class PlayerStats : BaseStats {
-    public float jumpPower = 50f;
+    public float jumpPower = 120f;
 }

@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController controller; // The motor that drives the player.
     public float turnSmoothTime = 0.1f;
     public Transform cam;
-    public float forceGravity = -15f; // Should be negative
+    public float forceGravity = -18f; // Should be negative
 
     private float turnSmoothVelocity;
     private float jumpVelocity;
