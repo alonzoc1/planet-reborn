@@ -15,7 +15,6 @@ public class PlayerInventory : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("name: " + other.tag);
         if (other.tag == "Coin")
         {
             currentCoins += 1;
