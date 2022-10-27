@@ -2,15 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
+
 
 public class CoinCounter : MonoBehaviour
 {
-	public TMP_Text coinCounter;
-	public GameObject player;
-	private void Update()
+	public TextMeshProUGUI coinCounter;
+	private const string LabelBase = "Coins: ";
+	
+
+	public void UpdateCount(int value)
 	{
-		coinCounter.text = player.GetComponent<PlayerInventory>().currentCoins.ToString();
+		coinCounter.text = LabelBase + value;
 	}
 }

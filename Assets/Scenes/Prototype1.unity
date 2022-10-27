@@ -3538,7 +3538,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinCounter: {fileID: 656170259}
-  player: {fileID: 964841833}
 --- !u!114 &1543283766
 MonoBehaviour:
   m_ObjectHideFlags: 0
