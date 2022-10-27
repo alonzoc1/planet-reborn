@@ -2,10 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Class <c>PlayerMovement</c> Contains the core player movement controls. Links to playerStats for movement.
-/// </summary>
-
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController controller; // The motor that drives the player.
@@ -17,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private float jumpVelocity;
     private PlayerStats playerStats;
 
-    // Start is called before the first frame updat
+    // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked; // Lock the mouse cursor when playing!
@@ -47,6 +43,8 @@ public class PlayerMovement : MonoBehaviour
         {
             controller.Move(HandleJumpMovement(Vector3.zero) * Time.deltaTime);
         }
+        
+
     }
     
     private Vector3 HandleJumpMovement(Vector3 moveDir) {

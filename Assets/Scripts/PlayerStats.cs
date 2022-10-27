@@ -7,5 +7,4 @@ using UnityEngine;
 /// </summary>
 public class PlayerStats : BaseStats {
     public float jumpPower = 120f;
-    public int numJumps = 1;
 }

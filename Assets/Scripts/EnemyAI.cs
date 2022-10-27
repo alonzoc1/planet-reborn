@@ -115,18 +115,19 @@ public class EnemyAI : MonoBehaviour
             return true;
         // If we're getting hit by the same instance of the same ability, ignore it
         return !(recentDamageTaken.ContainsKey(abilityTools.abilityName) &&
-                recentDamageTaken[abilityTools.abilityName] == abilityTools.activationId);
+                 recentDamageTaken[abilityTools.abilityName] == abilityTools.activationId);
     }
 
-    // Isn't used at the moment but serves to reduce the enemy's health
+    // Reduce the enemy's health, positive "damage" reduces health
     public void TakeDamage(int damage)
     {
-        stats.health -= damage;
-
-        if (stats.health <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
+        stats.ChangeCurrentHealth(damage * -1);
+        if (stats.state == BaseStats.State.Dead)
+            Invoke(nameof(DestroyEnemy), 0.5f);
     }
     private void DestroyEnemy()
     {
+        stats.Cleanup();
         Destroy(gameObject);
     }
 }
