@@ -6,6 +6,9 @@ TagManager:
   tags:
   - DamageSource
   - MainCanvas
+  - Collectable
+  - Enemy
+  - Coin
   layers:
   - Default
   - TransparentFX
