@@ -26,7 +26,7 @@ public class EnemyAI : MonoBehaviour
     [Tooltip("The speed the projectile is shot at")]
     public float projectileSpeed;
     private Dictionary<PlayerAbilities.AllAbilities, int> recentDamageTaken;
-    
+
     private void Awake() {
         recentDamageTaken = new Dictionary<PlayerAbilities.AllAbilities, int>();
         player = GameObject.Find("Player").transform;
@@ -81,9 +81,12 @@ public class EnemyAI : MonoBehaviour
         enemy.SetDestination(transform.position);
         transform.LookAt(player);
 
+        
+
         if (isAttacking) return;
         // Creates object to shot
-        Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+        Rigidbody rb = Instantiate(projectile, transform.position, transform.rotation).GetComponent<Rigidbody>();
+        Physics.IgnoreCollision(projectile.GetComponent<Collider>(), GetComponent<Collider>(),true);
         // Adds velocity to projectile
         // Variables may be adjusted for accurate shooting
         rb.AddForce(transform.forward * projectileSpeed, ForceMode.Impulse);
