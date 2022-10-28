@@ -6,18 +6,21 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    public int currentCoins;
+    [SerializeField] private int currentCoins;
+    private CoinCounter coinCounter;
 
-    private void Start()
-    {
-        currentCoins = 0;
+    private void Start() {
+        coinCounter = GameObject.FindWithTag("MainCanvas").GetComponent<CoinCounter>();
+        currentCoins = 0; // Get this from a persistant source in the future
+        coinCounter.UpdateCount(currentCoins);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Coin")
+        if (other.CompareTag("Coin"))
         {
             currentCoins += 1;
+            coinCounter.UpdateCount(currentCoins);
             Destroy(other.gameObject);
         }
     }
