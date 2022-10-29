@@ -8,15 +8,14 @@ using UnityEngine;
 /// </summary>
 public class Abilities : MonoBehaviour {
     public GameObject energyBurst;
+    public GameObject sniperShot;
     
     public GameObject GetAbilityGameObject(PlayerAbilities.AllAbilities ability) {
         // This is faster than doing a GameObject.Find, but requires a little more maintenance
-        switch (ability) {
-            case PlayerAbilities.AllAbilities.EnergyBurst:
-                return energyBurst;
-            default:
-                return null;
-        }
-        
+        return ability switch {
+            PlayerAbilities.AllAbilities.EnergyBurst => energyBurst,
+            PlayerAbilities.AllAbilities.SniperShot => sniperShot,
+            _ => null
+        };
     }
 }

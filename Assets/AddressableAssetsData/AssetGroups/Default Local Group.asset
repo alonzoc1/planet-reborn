@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: a55d170a7e130f54e9fa6edaf2bf930f
+  m_SerializeEntries:
+  - m_GUID: 031660090e6b35248a14ae6e588641ab
+    m_Address: energy_burst_icon
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2c833d82a58eaf249a38e60bd1b5a911
+    m_Address: sniper_shot_icon
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 3da816c7ba3fa1c45a737151fe759947, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 91fffb8c7c9316a42803b1d21c351e93, type: 2}
+    - {fileID: 11400000, guid: 708120897e3a318479eab526bd24f70b, type: 2}

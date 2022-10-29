@@ -11,6 +11,8 @@ public class AbilityTools : MonoBehaviour {
     public int activationId; // Useful for enemies to track instances of an ability to avoid getting hit twice by same move
     public bool hitsOnlyOnce;
     public int damage;
+    public float cooldown;
+    public string iconName;
 
     private void Awake() {
         activationId = 0;
