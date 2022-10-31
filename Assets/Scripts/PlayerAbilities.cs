@@ -7,7 +7,7 @@ public class PlayerAbilities : MonoBehaviour
 {
     public enum AllAbilities { // This stores all abilities that a player can possibly have
         None,
-        EnergyBurst,
+        Flamethrower,
         SniperShot
     }
 
@@ -45,8 +45,8 @@ public class PlayerAbilities : MonoBehaviour
     
     private void ActivateAbility(AllAbilities ability, AbilityTools abilityTools) {
         switch (ability) {
-            case AllAbilities.EnergyBurst:
-                EnergyBurst(abilityTools);
+            case AllAbilities.Flamethrower:
+                Flamethrower(abilityTools);
                 break;
             default:
                 Debug.Log("Ability not set/found");
@@ -65,7 +65,7 @@ public class PlayerAbilities : MonoBehaviour
         target.SetActive(false);
     }
     
-    private void EnergyBurst(AbilityTools abilityTools) {
+    private void Flamethrower(AbilityTools abilityTools) {
         StartCoroutine(EnableForTime(2.0f, abilityTools.gameObject, abilityTools));
     }
 
