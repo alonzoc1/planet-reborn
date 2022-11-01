@@ -7,41 +7,49 @@ public class PlayerAbilities : MonoBehaviour
 {
     public enum AllAbilities { // This stores all abilities that a player can possibly have
         None,
-        EnergyBurst
+        Flamethrower,
+        IceLance
     }
 
     public AllAbilities primaryAbility; // Ability to use on left click
     public AllAbilities secondaryAbility; // Ability to use on right click
     public List<AllAbilities> passiveAbilities; // Abilities that are having some passive effect
 
-    private GameObject primaryAbilityObj; // GameObject containing any effects/colliders/etc of the primary ability
-    private GameObject secondaryAbilityObj; // Same as above but for secondary ability
+    private AbilityCooldowns cooldowns;
+    private AbilityTools primaryAbilityTools; // GameObject containing any effects/colliders/etc of the primary ability
+    private AbilityTools secondaryAbilityTools; // Same as above but for secondary ability
     private Abilities abilities; // Reference to Abilities script
-    private bool abilitiesDisabled;
 
     private void Start() {
         // Note: We use the Abilities script to get the GameObject references since it is both:
         // - Much faster than using GameObject.Find, and
         // - GameObject.Find cannot even 'find' disabled GameObjects
         abilities = gameObject.GetComponentInChildren<Abilities>();
-        primaryAbilityObj = abilities.GetAbilityGameObject(primaryAbility);
-        secondaryAbilityObj = abilities.GetAbilityGameObject(secondaryAbility);
-        abilitiesDisabled = false;
+        primaryAbilityTools = abilities.GetAbilityGameObject(primaryAbility).GetComponent<AbilityTools>();
+        secondaryAbilityTools = abilities.GetAbilityGameObject(secondaryAbility).GetComponent<AbilityTools>();
+
+        cooldowns = GameObject.FindGameObjectWithTag("CooldownsUI").GetComponent<AbilityCooldowns>();
     }
 
     private void Update() {
-        if (abilitiesDisabled)
-            return;
-        if (Input.GetKeyDown(KeyCode.Mouse0)) // Activate left click ability
-            ActivateAbility(primaryAbility, primaryAbilityObj);
-        else if (Input.GetKeyDown(KeyCode.Mouse1)) // Activate right click ability
-            ActivateAbility(secondaryAbility, secondaryAbilityObj);
+        if (Input.GetKeyDown(KeyCode.Mouse0) && cooldowns.GetAbilityReady(AbilityCooldowns.AbilitySlots.LeftSlot)) {
+            // Activate left click ability
+            cooldowns.StartCooldown(AbilityCooldowns.AbilitySlots.LeftSlot, primaryAbilityTools.cooldown);
+            ActivateAbility(primaryAbility, primaryAbilityTools);
+        } else if (Input.GetKeyDown(KeyCode.Mouse1) && cooldowns.GetAbilityReady(AbilityCooldowns.AbilitySlots.RightSlot)) {
+            // Activate right click ability
+            cooldowns.StartCooldown(AbilityCooldowns.AbilitySlots.RightSlot, secondaryAbilityTools.cooldown);
+            ActivateAbility(secondaryAbility, secondaryAbilityTools);
+        }
     }
     
-    private void ActivateAbility(AllAbilities ability, GameObject abilityObject) {
+    private void ActivateAbility(AllAbilities ability, AbilityTools abilityTools) {
         switch (ability) {
-            case AllAbilities.EnergyBurst:
-                EnergyBurst(abilityObject);
+            case AllAbilities.Flamethrower:
+                Flamethrower(abilityTools);
+                break;
+            case AllAbilities.IceLance:
+                IceLance(abilityTools);
                 break;
             default:
                 Debug.Log("Ability not set/found");
@@ -53,16 +61,34 @@ public class PlayerAbilities : MonoBehaviour
         // Activate object for some set time
         if (!target.activeInHierarchy)
         {
-            abilitiesDisabled = true;
             target.SetActive(true);
             tools.IncrementActivationId();
             yield return new WaitForSeconds(time);
         }
-        abilitiesDisabled = false;
         target.SetActive(false);
     }
-    
-    private void EnergyBurst(GameObject abilityObject) {
-        StartCoroutine(EnableForTime(2.0f, abilityObject, abilityObject.GetComponent<AbilityTools>()));
+
+    private void Flamethrower(AbilityTools abilityTools) {
+        StartCoroutine(EnableForTime(2.0f, abilityTools.gameObject, abilityTools));
+    }
+
+    private void IceLance(AbilityTools abilityTools) {
+        StartCoroutine(EnableForTime(5.2f, abilityTools.gameObject, abilityTools));
+        Transform abilityToolsTransform = abilityTools.gameObject.transform;
+        GameObject projectile = Instantiate(abilityTools.projectilePrefab, abilityToolsTransform.position, abilityToolsTransform.rotation);
+        projectile.GetComponent<Projectile>().goTo = abilityTools.GetAim();
+
+        GameObject aimedTarget = abilityTools.GetAimedTarget();
+        if (aimedTarget.CompareTag("Enemy")) {
+            aimedTarget.GetComponent<EnemyAI>().TakeDamage(abilityTools.damage);
+        }
+    }
+
+    public string GetIconName(AbilityCooldowns.AbilitySlots slot) {
+        return slot switch {
+            AbilityCooldowns.AbilitySlots.LeftSlot => primaryAbilityTools.iconName,
+            AbilityCooldowns.AbilitySlots.RightSlot => secondaryAbilityTools.iconName,
+            _ => null
+        };
     }
 }
