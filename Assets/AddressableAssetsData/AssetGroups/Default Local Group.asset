@@ -29,6 +29,10 @@ MonoBehaviour:
     m_Address: flamethrower_icon
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 75098849eb989624e9fdeab833480fd3
+    m_Address: ice_lance_icon
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 3da816c7ba3fa1c45a737151fe759947, type: 2}
   m_SchemaSet:

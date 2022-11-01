@@ -8,7 +8,7 @@ public class PlayerAbilities : MonoBehaviour
     public enum AllAbilities { // This stores all abilities that a player can possibly have
         None,
         Flamethrower,
-        SniperShot
+        IceLance
     }
 
     public AllAbilities primaryAbility; // Ability to use on left click
@@ -48,6 +48,9 @@ public class PlayerAbilities : MonoBehaviour
             case AllAbilities.Flamethrower:
                 Flamethrower(abilityTools);
                 break;
+            case AllAbilities.IceLance:
+                IceLance(abilityTools);
+                break;
             default:
                 Debug.Log("Ability not set/found");
                 break;
@@ -64,9 +67,21 @@ public class PlayerAbilities : MonoBehaviour
         }
         target.SetActive(false);
     }
-    
+
     private void Flamethrower(AbilityTools abilityTools) {
         StartCoroutine(EnableForTime(2.0f, abilityTools.gameObject, abilityTools));
+    }
+
+    private void IceLance(AbilityTools abilityTools) {
+        StartCoroutine(EnableForTime(5.2f, abilityTools.gameObject, abilityTools));
+        Transform abilityToolsTransform = abilityTools.gameObject.transform;
+        GameObject projectile = Instantiate(abilityTools.projectilePrefab, abilityToolsTransform.position, abilityToolsTransform.rotation);
+        projectile.GetComponent<Projectile>().goTo = abilityTools.GetAim();
+
+        GameObject aimedTarget = abilityTools.GetAimedTarget();
+        if (aimedTarget.CompareTag("Enemy")) {
+            aimedTarget.GetComponent<EnemyAI>().TakeDamage(abilityTools.damage);
+        }
     }
 
     public string GetIconName(AbilityCooldowns.AbilitySlots slot) {

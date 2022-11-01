@@ -8,7 +8,7 @@ using UnityEngine;
 /// </summary>
 public class Abilities : MonoBehaviour {
     public GameObject flamethrower;
-    public GameObject sniperShot;
+    public GameObject iceLance;
 
     private const float DefaultAimDistance = 25;
     private Camera mainCamera;
@@ -22,7 +22,7 @@ public class Abilities : MonoBehaviour {
         // This is faster than doing a GameObject.Find, but requires a little more maintenance
         return ability switch {
             PlayerAbilities.AllAbilities.Flamethrower => flamethrower,
-            PlayerAbilities.AllAbilities.SniperShot => sniperShot,
+            PlayerAbilities.AllAbilities.IceLance => iceLance,
             _ => null
         };
     }
@@ -40,5 +40,12 @@ public class Abilities : MonoBehaviour {
 
     public Vector3 GetAim() {
         return aimedAt;
+    }
+
+    public GameObject GetAimedTarget() {
+        Ray ray = mainCamera.ViewportPointToRay(new Vector3(.5f, .5f, 0f));
+        if (Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, ~0, QueryTriggerInteraction.Ignore))
+            return hit.collider.gameObject;
+        return null;
     }
 }
