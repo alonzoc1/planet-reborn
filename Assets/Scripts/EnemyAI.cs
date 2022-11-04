@@ -26,9 +26,13 @@ public class EnemyAI : MonoBehaviour
     [Tooltip("The speed the projectile is shot at")]
     public float projectileSpeed;
     private Dictionary<PlayerAbilities.AllAbilities, int> recentDamageTaken;
+    private Dictionary<PlayerAbilities.AllAbilities, AbilityTools> collidingWith;
+    private float damageTimeBuffer;
 
     private void Awake() {
         recentDamageTaken = new Dictionary<PlayerAbilities.AllAbilities, int>();
+        collidingWith = new Dictionary<PlayerAbilities.AllAbilities, AbilityTools>();
+        damageTimeBuffer = 0f;
         player = GameObject.Find("Player").transform;
         enemy = GetComponent<NavMeshAgent>();
         stats = GetComponent<EnemyStats>();
@@ -44,6 +48,24 @@ public class EnemyAI : MonoBehaviour
         if (!playerInSight && !playerInAttackRange) Searching();
         if (playerInSight && !playerInAttackRange) ChasePlayer();
         if (playerInAttackRange && playerInSight) AttackPlayer();
+
+        // Deal one tick of colliding multi-hit damage 5 times a second
+        damageTimeBuffer += Time.deltaTime;
+        while (damageTimeBuffer >= .2f) { // Should only loop once per .2 seconds (less than once a frame typically)
+            damageTimeBuffer -= .2f;
+            List<PlayerAbilities.AllAbilities> toRemove = new List<PlayerAbilities.AllAbilities>();
+            foreach (KeyValuePair<PlayerAbilities.AllAbilities, AbilityTools> damageSource in collidingWith) {
+                if (!damageSource.Value.gameObject.activeInHierarchy)
+                    // OnTriggerExit sometimes won't trigger if ability runs out of time before physically exiting the
+                    // enemy's collider, so we do an active check here
+                    toRemove.Add(damageSource.Key);
+                else
+                    TakeDamage(damageSource.Value.damage);
+            }
+
+            foreach (PlayerAbilities.AllAbilities remove in toRemove)
+                collidingWith.Remove(remove);
+        }
     }
 
     private void Searching()
@@ -81,8 +103,6 @@ public class EnemyAI : MonoBehaviour
         enemy.SetDestination(transform.position);
         transform.LookAt(player);
 
-        
-
         if (isAttacking) return;
         // Creates object to shot
         Rigidbody rb = Instantiate(projectile, transform.position, transform.rotation).GetComponent<Rigidbody>();
@@ -99,13 +119,21 @@ public class EnemyAI : MonoBehaviour
     {
         isAttacking = false;
     }
-    
-    private void OnTriggerEnter(Collider collision)
-    {
+
+    private void OnTriggerEnter(Collider collision) {
+        // This function detects when we're colliding with a damage source, and decides to apply damage
+        // if needed. For multi-hit damage sources, we also store the ability name and continue taking damage
+        // from it over time until OnTriggerExit removes the collision. This has better performance than OnTriggerStay
         if (!collision.gameObject.CompareTag("DamageSource"))
             return;
         
         AbilityTools abilityTools = collision.gameObject.GetComponent<AbilityTools>();
+        if (!abilityTools.hitsOnlyOnce) {
+            // Deal with multi-hit attacks in Update
+            collidingWith.TryAdd(abilityTools.abilityName, abilityTools);
+            return;
+        }
+
         if (!CanTakeDamageFromSource(abilityTools))
             return;
         
@@ -113,9 +141,14 @@ public class EnemyAI : MonoBehaviour
         recentDamageTaken[abilityTools.abilityName] = abilityTools.activationId;
     }
 
+    private void OnTriggerExit(Collider collision) {
+        if (!collision.gameObject.CompareTag("DamageSource"))
+            return;
+
+        collidingWith.Remove(collision.GetComponent<AbilityTools>().abilityName);
+    }
+
     private bool CanTakeDamageFromSource(AbilityTools abilityTools) {
-        if (!abilityTools.hitsOnlyOnce)
-            return true;
         // If we're getting hit by the same instance of the same ability, ignore it
         return !(recentDamageTaken.ContainsKey(abilityTools.abilityName) &&
                  recentDamageTaken[abilityTools.abilityName] == abilityTools.activationId);
