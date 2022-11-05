@@ -20,7 +20,7 @@ public class InventoryUI : MonoBehaviour {
 	
     private void Update() 
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if ((Input.GetKeyDown(KeyCode.Tab) && Time.timeScale != 0f) || (Input.GetKeyDown(KeyCode.Tab) && inventoryUI.activeSelf))
         {
             inventoryUI.SetActive(!inventoryUI.activeSelf);
         }
@@ -39,4 +39,4 @@ public class InventoryUI : MonoBehaviour {
             }
         }
     }
-}
+}    

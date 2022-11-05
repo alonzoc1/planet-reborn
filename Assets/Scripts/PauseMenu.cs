@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
-    public static bool GameIsPaused = false;
+    private static bool GameIsPaused = false;
 
     public GameObject PauseMenuUI;
     // Update is called once per frame
@@ -15,12 +16,10 @@ public class PauseMenu : MonoBehaviour
          // Unlocks cursor and pause or un-pause game
          if (!GameIsPaused)
          {   
-             Cursor.lockState = CursorLockMode.Confined;
              Pause();
          }
          else
          {
-             Cursor.lockState = CursorLockMode.Locked;
              Resume();
          }
      }
@@ -31,6 +30,7 @@ public class PauseMenu : MonoBehaviour
         // makes component inactive and un-freezes the game
         PauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.Locked;
         GameIsPaused = false;
     }
 
@@ -39,13 +39,14 @@ public class PauseMenu : MonoBehaviour
         // makes component active and freezes the game
         PauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.Confined;
         GameIsPaused = true;
     }
 
     public void Quit()
     {
-        // Closes the game, doesn't work in editor.
-        Debug.Log("Game Quit!");
-        Application.Quit();
+        // loads the scene with index 0, which should be the Main Menu
+        GameIsPaused = false;
+        SceneManager.LoadScene(0);
     }
 }
