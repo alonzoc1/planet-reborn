@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,4 +8,15 @@ using UnityEngine;
 /// </summary>
 public class PlayerStats : BaseStats {
     public float jumpPower = 120f;
+    public PlayerHealthBarUI healthbar;
+
+    private void Start() {
+        healthbar.SetValue(currentHealth, maxHealth);
+    }
+    
+    public override void ChangeCurrentHealth(int modifyBy)
+    {
+        base.ChangeCurrentHealth(modifyBy);
+        healthbar.SetValue(currentHealth, maxHealth);
+    }
 }

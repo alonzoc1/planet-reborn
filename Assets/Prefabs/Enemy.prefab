@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 434942136}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -198,6 +198,8 @@ MonoBehaviour:
   currentHealth: 0
   healthBarPrefab: {fileID: 8768487174815055656, guid: 998ca5a8d63dc8347ba45aec04942caf, type: 3}
   healthBarPosOffset: {x: 0, y: 1.8, z: 0}
+  healthBarScale: 0
+  healthBarColor: {r: 0, g: 0, b: 0, a: 0}
   attackSpeed: 2
   sightRange: 10
   attackRange: 5
