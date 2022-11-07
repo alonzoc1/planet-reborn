@@ -10,8 +10,4 @@ TO-DO LIST
 - [X] Lock the mouse to the center of the screen when playing.
 - [X] Migrate to the latest LTS version and fix any small inconsistences. I won't be add anymore features until we're set on which LTS engine we're going to use for Unity.
 - [X] Fix the camera bug where the mouse moves the camera the opposite direction.
-- [X] Add base stats for the player character. Possibly need typedef struct?
-- [X] Add a basic level out to level 1
-- [ ] Add some detail to level 1, with the inclusion of some assets, not primitive objects.
-- [ ] Work with Michael to finish level 1.5.
-- [ ] TBD on level 2.
+- [ ] Add base stats for the player character. Possibly need typedef struct?
