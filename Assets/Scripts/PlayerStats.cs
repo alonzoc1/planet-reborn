@@ -19,4 +19,5 @@ public class PlayerStats : BaseStats {
         base.ChangeCurrentHealth(modifyBy);
         healthbar.SetValue(currentHealth, maxHealth);
     }
+    // Note: If searching for ChangeMaxHealth, found in BaseStats (Override removed due to redundancy)
 }

@@ -36,4 +36,24 @@ public class BaseStats : MonoBehaviour {
         } else if (currentHealth > maxHealth)
             currentHealth = maxHealth;
     }
+
+    /// <summary>
+    /// Use this to change the max health of a character midgame (such as retrieving a buff)
+    /// </summary>
+    /// <param name="modifyBy">Negative if damage, positive if healing</param>
+    public virtual void ChangeMaxHealth(int modifyBy)
+    {
+        maxHealth += modifyBy;
+        if (maxHealth <= 0)
+        { // Prevents setting health to unwanted values, will reset max/current HP to 1
+            maxHealth = 1;
+            currentHealth = 1;
+        }
+        // Below should not be reached atm but covers case if debuffs are added
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+
+    }
 }
