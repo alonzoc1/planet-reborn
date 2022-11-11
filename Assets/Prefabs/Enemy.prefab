@@ -196,7 +196,7 @@ MonoBehaviour:
   maxHealth: 100
   state: 0
   currentHealth: 0
-  healthBarPrefab: {fileID: 8768487174815055656, guid: 998ca5a8d63dc8347ba45aec04942caf, type: 3}
+  healthBarPrefab: {fileID: 6117348305966018472, guid: 998ca5a8d63dc8347ba45aec04942caf, type: 3}
   healthBarPosOffset: {x: 0, y: 1.8, z: 0}
   healthBarScale: 0
   healthBarColor: {r: 0, g: 0, b: 0, a: 0}

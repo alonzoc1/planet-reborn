@@ -9,7 +9,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: dc0da1852e63d5f41a576735aa91cdce
   - enabled: 1
-    path: Assets/Scenes/Prototype1.unity
+    path: Assets/Scenes/Level 1/level1.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Prototype1.unity
+    guid: a18ebda073e8e2b4da356693d9eb5717
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: cb5b263402204204a81d34ce9502def3, type: 2}
