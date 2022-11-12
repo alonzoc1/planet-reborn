@@ -10,7 +10,7 @@ public class Pickup : MonoBehaviour {
         PickUp();
     }
 
-    private void PickUp()
+    protected void PickUp()
     {
         bool wasPickedUp = Inventory.instance.Add(collectable);
 
