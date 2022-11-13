@@ -24,8 +24,11 @@ public class EnemyStats : BaseStats {
         Destroy(healthBarUI.gameObject);
     }
     
-    public override void ChangeCurrentHealth(int modifyBy) {
-        base.ChangeCurrentHealth(modifyBy);
+    public override State ChangeCurrentHealth(int modifyBy) {
+        // Update current health, and if we died on this instance of damage, report it to the event manager
+        if ((state != base.ChangeCurrentHealth(modifyBy)) && (state == State.Dead))
+            EventManager.ReportEnemyDeath();
         healthBarUI.SetValue((float) currentHealth /  maxHealth);
+        return state;
     }
 }

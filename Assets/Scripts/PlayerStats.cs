@@ -14,10 +14,11 @@ public class PlayerStats : BaseStats {
         healthbar.SetValue(currentHealth, maxHealth);
     }
     
-    public override void ChangeCurrentHealth(int modifyBy)
+    public override State ChangeCurrentHealth(int modifyBy)
     {
         base.ChangeCurrentHealth(modifyBy);
         healthbar.SetValue(currentHealth, maxHealth);
+        return state;
     }
     // Note: If searching for ChangeMaxHealth, found in BaseStats (Override removed due to redundancy)
 }

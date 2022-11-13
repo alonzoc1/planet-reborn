@@ -28,13 +28,16 @@ public class BaseStats : MonoBehaviour {
     /// Use this to heal or damage a character. If character is reduced to 0 or lower, sets state to "dead"
     /// </summary>
     /// <param name="modifyBy">Negative if damage, positive if healing</param>
-    public virtual void ChangeCurrentHealth(int modifyBy) {
+    /// <returns>Returns state</returns>
+    public virtual State ChangeCurrentHealth(int modifyBy) {
         currentHealth += modifyBy;
         if (currentHealth <= 0) { // ded
              currentHealth = 0;
              state = State.Dead;
         } else if (currentHealth > maxHealth)
             currentHealth = maxHealth;
+
+        return state;
     }
 
     /// <summary>

@@ -24,6 +24,7 @@ public class PlayerAbilities : MonoBehaviour
         // Note: We use the Abilities script to get the GameObject references since it is both:
         // - Much faster than using GameObject.Find, and
         // - GameObject.Find cannot even 'find' disabled GameObjects
+        // Note 2: This Start() must run before AbilityCooldowns Start()!
         abilities = gameObject.GetComponentInChildren<Abilities>();
         primaryAbilityTools = abilities.GetAbilityGameObject(primaryAbility).GetComponent<AbilityTools>();
         secondaryAbilityTools = abilities.GetAbilityGameObject(secondaryAbility).GetComponent<AbilityTools>();
@@ -79,7 +80,7 @@ public class PlayerAbilities : MonoBehaviour
         projectile.GetComponent<Projectile>().goTo = abilityTools.GetAim();
 
         GameObject aimedTarget = abilityTools.GetAimedTarget();
-        if (aimedTarget.CompareTag("Enemy")) {
+        if (aimedTarget != null && aimedTarget.CompareTag("Enemy")) {
             aimedTarget.GetComponent<EnemyAI>().TakeDamage(abilityTools.damage);
         }
     }
