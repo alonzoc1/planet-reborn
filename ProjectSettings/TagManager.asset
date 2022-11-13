@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - Coin
   - CooldownsUI
+  - GameManager
   layers:
   - Default
   - TransparentFX
