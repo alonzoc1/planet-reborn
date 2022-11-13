@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class VictoryConditions : MonoBehaviour
 {
@@ -14,7 +15,14 @@ public class VictoryConditions : MonoBehaviour
         //Endless
     }
 
+    public enum SceneLibrary { // These MUST be in the same order as each scene's index in Build Settings
+        MainMenu,
+        Level1,
+        Shop
+    }
+
     public VictoryModes victoryMode = VictoryModes.None; // Change this in editor per scene
+    public SceneLibrary nextScene;
     public int defeatNumber = 5;
 
     private int enemyCount = 0;
@@ -64,5 +72,6 @@ public class VictoryConditions : MonoBehaviour
 
     private void Victory() {
         Debug.Log("You win :)");
+        SceneManager.LoadScene((int)nextScene);
     }
 }
