@@ -79,7 +79,7 @@ public class PlayerAbilities : MonoBehaviour
         projectile.GetComponent<Projectile>().goTo = abilityTools.GetAim();
 
         GameObject aimedTarget = abilityTools.GetAimedTarget();
-        if (aimedTarget.CompareTag("Enemy")) {
+        if (aimedTarget != null && aimedTarget.CompareTag("Enemy")) {
             aimedTarget.GetComponent<EnemyAI>().TakeDamage(abilityTools.damage);
         }
     }
