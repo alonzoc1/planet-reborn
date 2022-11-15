@@ -8,9 +8,10 @@ public class PlayerInventory : MonoBehaviour
 {
     [SerializeField] private int currentCoins;
     private CoinCounter coinCounter;
-
+    private PlayerHealthBarUI healthBar;
     private void Start() {
         coinCounter = GameObject.FindWithTag("MainCanvas").GetComponent<CoinCounter>();
+        healthBar = GameObject.FindWithTag("PlayerHealthBar").GetComponent<PlayerHealthBarUI>();
         currentCoins = 0; // Get this from a persistant source in the future
         coinCounter.UpdateCount(currentCoins);
     }
@@ -21,6 +22,13 @@ public class PlayerInventory : MonoBehaviour
         {
             currentCoins += 1;
             coinCounter.UpdateCount(currentCoins);
+            Destroy(other.gameObject);
+        }
+        // make the players health decrease if he is hit by a bullet
+        if (other.CompareTag("Bullet"))
+        {
+            // decrease health in the playerHealthbar
+            healthBar.DecreaseHealth(10);
             Destroy(other.gameObject);
         }
     }

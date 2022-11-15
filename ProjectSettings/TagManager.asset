@@ -11,6 +11,8 @@ TagManager:
   - Coin
   - CooldownsUI
   - GameManager
+  - PlayerHealthBar
+  - Bullet
   layers:
   - Default
   - TransparentFX
