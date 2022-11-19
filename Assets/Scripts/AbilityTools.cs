@@ -13,11 +13,11 @@ public class AbilityTools : MonoBehaviour {
         activationId; // Useful for enemies to track instances of an ability to avoid getting hit twice by same move
 
     public bool hitsOnlyOnce;
-    public bool aimedAbility;
+    public bool aimedAbility; // Ability direction needs to be updated each frame (not needed for projectiles)
     public int damage;
     public float cooldown;
     public string iconName;
-    public GameObject projectilePrefab;
+    public GameObject abilityPrefab; // Use this if you need to spawn something in for the ability activation
 
     private Abilities abilities;
 
