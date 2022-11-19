@@ -8,7 +8,7 @@ public class PlayerAbilities : MonoBehaviour
     public enum AllAbilities { // This stores all abilities that a player can possibly have
         None,
         Flamethrower,
-        IceLance
+        PiercingLaser
     }
 
     public AllAbilities primaryAbility; // Ability to use on left click
@@ -49,8 +49,8 @@ public class PlayerAbilities : MonoBehaviour
             case AllAbilities.Flamethrower:
                 Flamethrower(abilityTools);
                 break;
-            case AllAbilities.IceLance:
-                IceLance(abilityTools);
+            case AllAbilities.PiercingLaser:
+                PiercingLaser(abilityTools);
                 break;
             default:
                 Debug.Log("Ability not set/found");
@@ -73,7 +73,7 @@ public class PlayerAbilities : MonoBehaviour
         StartCoroutine(EnableForTime(2.0f, abilityTools.gameObject, abilityTools));
     }
 
-    private void IceLance(AbilityTools abilityTools) {
+    private void PiercingLaser(AbilityTools abilityTools) {
         StartCoroutine(EnableForTime(5.2f, abilityTools.gameObject, abilityTools));
         Transform abilityToolsTransform = abilityTools.gameObject.transform;
         GameObject projectile = Instantiate(abilityTools.projectilePrefab, abilityToolsTransform.position, abilityToolsTransform.rotation);
