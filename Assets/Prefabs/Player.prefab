@@ -81,7 +81,12 @@ MonoBehaviour:
   aimedAbility: 0
   damage: 90
   cooldown: 6
-  iconName: Assets/UI/SkillIcons/PrecisionAim.png
+  iconReference:
+    m_AssetGUID: 62a28b8ede95d6f49a15f176ef5385cf
+    m_SubObjectName: PrecisionAim
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 0
   abilityPrefab: {fileID: 8279439706951382942, guid: ffbc88411f67b424eba6ce2f195828fe, type: 3}
 --- !u!1 &1945878209718047070
 GameObject:
@@ -614,7 +619,12 @@ MonoBehaviour:
   aimedAbility: 1
   damage: 5
   cooldown: 3
-  iconName: Assets/UI/SkillIcons/flamethrower_icon.png
+  iconReference:
+    m_AssetGUID: c9d29f32ec9cab54c8066e1723e2c412
+    m_SubObjectName: flamethrower_icon
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 0
   abilityPrefab: {fileID: 0}
 --- !u!4 &1950459309182591141 stripped
 Transform:

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -26938,7 +26938,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0193639, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -26954,7 +26954,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 912224713}
-  m_LocalRotation: {x: 0.19424808, y: 0.000000018870892, z: -0.0000000037368117, w: 0.98095244}
+  m_LocalRotation: {x: 0.19424808, y: -0.000000018870892, z: 0.0000000037368117, w: 0.98095244}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -30339,7 +30339,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0193639, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -32218,7 +32218,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1099099599}
-  m_LocalRotation: {x: 0.21201202, y: -1.9683227e-10, z: -4.310137e-11, w: 0.9772671}
+  m_LocalRotation: {x: 0.21201202, y: 1.9683227e-10, z: 4.310137e-11, w: 0.9772671}
   m_LocalPosition: {x: -125, y: 10.16, z: -132.24983}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -36754,7 +36754,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0193639, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -51749,7 +51749,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0193639, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -63215,32 +63215,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 784818783, guid: 04d857657bb64434db213293631cfe0d, type: 3}
-      propertyPath: iconReference.m_AssetGUID
-      value: c9d29f32ec9cab54c8066e1723e2c412
-      objectReference: {fileID: 0}
-    - target: {fileID: 784818783, guid: 04d857657bb64434db213293631cfe0d, type: 3}
-      propertyPath: iconReference.m_SubObjectName
-      value: flamethrower_icon
-      objectReference: {fileID: 0}
-    - target: {fileID: 784818783, guid: 04d857657bb64434db213293631cfe0d, type: 3}
-      propertyPath: iconReference.m_SubObjectType
-      value: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      objectReference: {fileID: 0}
-    - target: {fileID: 1799605141, guid: 04d857657bb64434db213293631cfe0d, type: 3}
-      propertyPath: iconReference.m_AssetGUID
-      value: 62a28b8ede95d6f49a15f176ef5385cf
-      objectReference: {fileID: 0}
-    - target: {fileID: 1799605141, guid: 04d857657bb64434db213293631cfe0d, type: 3}
-      propertyPath: iconReference.m_SubObjectName
-      value: PrecisionAim
-      objectReference: {fileID: 0}
-    - target: {fileID: 1799605141, guid: 04d857657bb64434db213293631cfe0d, type: 3}
-      propertyPath: iconReference.m_SubObjectType
-      value: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      objectReference: {fileID: 0}
     - target: {fileID: 1945878209718047070, guid: 04d857657bb64434db213293631cfe0d, type: 3}
       propertyPath: m_Name
       value: Player
