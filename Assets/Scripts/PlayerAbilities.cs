@@ -2,13 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 public class PlayerAbilities : MonoBehaviour
 {
     public enum AllAbilities { // This stores all abilities that a player can possibly have
         None,
         Flamethrower,
-        IceLance
+        PiercingLaser
     }
 
     public AllAbilities primaryAbility; // Ability to use on left click
@@ -49,8 +50,8 @@ public class PlayerAbilities : MonoBehaviour
             case AllAbilities.Flamethrower:
                 Flamethrower(abilityTools);
                 break;
-            case AllAbilities.IceLance:
-                IceLance(abilityTools);
+            case AllAbilities.PiercingLaser:
+                PiercingLaser(abilityTools);
                 break;
             default:
                 Debug.Log("Ability not set/found");
@@ -73,22 +74,39 @@ public class PlayerAbilities : MonoBehaviour
         StartCoroutine(EnableForTime(2.0f, abilityTools.gameObject, abilityTools));
     }
 
-    private void IceLance(AbilityTools abilityTools) {
-        StartCoroutine(EnableForTime(5.2f, abilityTools.gameObject, abilityTools));
-        Transform abilityToolsTransform = abilityTools.gameObject.transform;
-        GameObject projectile = Instantiate(abilityTools.projectilePrefab, abilityToolsTransform.position, abilityToolsTransform.rotation);
-        projectile.GetComponent<Projectile>().goTo = abilityTools.GetAim();
-
+    private void PiercingLaser(AbilityTools abilityTools) {
+        StartCoroutine(EnableForTime(5.0f, abilityTools.gameObject, abilityTools));
+        // Spawn the trail (spawn as its own object, not as a child)
+        Transform abilityToolsTransform = abilityTools.transform;
+        GameObject trail = Instantiate(abilityTools.abilityPrefab, abilityToolsTransform.position, abilityToolsTransform.rotation);
+        Vector3 destination = abilityTools.GetAim();
+        // Larger trail resolution means it takes more frames to be drawn, but it looks a lot better across longer distances
+        int trailResolution = (int)(Vector3.Distance(trail.transform.position, destination) / 20) + 1;
+        StartCoroutine(HitscanTrailMove(trail, destination, trailResolution));
+        // Do damage if the hitscan is a hit
         GameObject aimedTarget = abilityTools.GetAimedTarget();
-        if (aimedTarget != null && aimedTarget.CompareTag("Enemy")) {
+        if (!ReferenceEquals(aimedTarget, null) && aimedTarget.CompareTag("Enemy")) // Faster than != null I guess :^)
             aimedTarget.GetComponent<EnemyAI>().TakeDamage(abilityTools.damage);
-        }
     }
 
-    public string GetIconName(AbilityCooldowns.AbilitySlots slot) {
+    /**
+     * Move trail to a point incredibly quickly for hitscan effects
+     */
+    private IEnumerator HitscanTrailMove(GameObject trail, Vector3 destination, int framesToWait) {
+        float distancePerFrame = Vector3.Distance(trail.transform.position, destination) / framesToWait;
+        while (framesToWait > 0) {
+            framesToWait--;
+            yield return new WaitForEndOfFrame();
+            // If we're arriving this frame, snap to destination, otherwise move distancePerFrame
+            trail.transform.position = framesToWait > 0 ?
+                Vector3.MoveTowards(trail.transform.position, destination, distancePerFrame) : destination;
+        }
+    }
+    
+    public AssetReferenceSprite GetIcon(AbilityCooldowns.AbilitySlots slot) {
         return slot switch {
-            AbilityCooldowns.AbilitySlots.LeftSlot => primaryAbilityTools.iconName,
-            AbilityCooldowns.AbilitySlots.RightSlot => secondaryAbilityTools.iconName,
+            AbilityCooldowns.AbilitySlots.LeftSlot => primaryAbilityTools.iconReference,
+            AbilityCooldowns.AbilitySlots.RightSlot => secondaryAbilityTools.iconReference,
             _ => null
         };
     }

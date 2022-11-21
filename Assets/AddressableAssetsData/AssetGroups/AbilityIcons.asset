@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: AbilityIcons
+  m_EditorClassIdentifier: 
+  m_GroupName: AbilityIcons
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 8e885bf99a7b2c84cba4448e0f035841
+  m_SerializeEntries:
+  - m_GUID: c9d29f32ec9cab54c8066e1723e2c412
+    m_Address: Assets/UI/SkillIcons/flamethrower_icon.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 62a28b8ede95d6f49a15f176ef5385cf
+    m_Address: Assets/UI/SkillIcons/PrecisionAim.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 3da816c7ba3fa1c45a737151fe759947, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 6487fea489f67714a9aba87609eb3d7c, type: 2}
+    - {fileID: 11400000, guid: 3d7229ecbae791645ba9408a532821b7, type: 2}

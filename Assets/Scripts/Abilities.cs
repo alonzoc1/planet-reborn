@@ -8,7 +8,7 @@ using UnityEngine;
 /// </summary>
 public class Abilities : MonoBehaviour {
     public GameObject flamethrower;
-    public GameObject iceLance;
+    public GameObject piercingLaser;
 
     private const float DefaultAimDistance = 25;
     private Camera mainCamera;
@@ -22,7 +22,7 @@ public class Abilities : MonoBehaviour {
         // This is faster than doing a GameObject.Find, but requires a little more maintenance
         return ability switch {
             PlayerAbilities.AllAbilities.Flamethrower => flamethrower,
-            PlayerAbilities.AllAbilities.IceLance => iceLance,
+            PlayerAbilities.AllAbilities.PiercingLaser => piercingLaser,
             _ => null
         };
     }

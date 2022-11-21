@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 1799605140}
   - component: {fileID: 1799605141}
   m_Layer: 0
-  m_Name: IceLance
+  m_Name: PiercingLaser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,12 +77,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: 2
   activationId: 0
-  hitsOnlyOnce: 0
+  hitsOnlyOnce: 1
   aimedAbility: 0
   damage: 90
   cooldown: 6
-  iconName: ice_lance_icon
-  projectilePrefab: {fileID: 5415134047335919746, guid: 50562e0d934207c4da77830a5639840e, type: 3}
+  iconName: Assets/UI/SkillIcons/PrecisionAim.png
+  abilityPrefab: {fileID: 8279439706951382942, guid: ffbc88411f67b424eba6ce2f195828fe, type: 3}
 --- !u!1 &1945878209718047070
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6702d3c13143c0940aad6a2816d89647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
+  movementSpeed: 15
   maxHealth: 100
   state: 0
   currentHealth: 100
@@ -475,7 +475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flamethrower: {fileID: 1946939583190577367}
-  iceLance: {fileID: 1799605139}
+  piercingLaser: {fileID: 1799605139}
   aimedAt: {x: 0, y: 0, z: 0}
 --- !u!1001 &1945878210659860535
 PrefabInstance:
@@ -614,8 +614,8 @@ MonoBehaviour:
   aimedAbility: 1
   damage: 5
   cooldown: 3
-  iconName: flamethrower_icon
-  projectilePrefab: {fileID: 0}
+  iconName: Assets/UI/SkillIcons/flamethrower_icon.png
+  abilityPrefab: {fileID: 0}
 --- !u!4 &1950459309182591141 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4584431484625042, guid: 007c57e2df8e9b144b99f471b84f3d56, type: 3}
