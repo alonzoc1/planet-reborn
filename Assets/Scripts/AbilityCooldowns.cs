@@ -88,16 +88,17 @@ public class AbilityCooldowns : MonoBehaviour {
     }
 
     private IEnumerator SetAbilityIcons(PlayerAbilities playerAbilities) {
-        AsyncOperationHandle<Sprite> leftIconHandle = Addressables.LoadAssetAsync<Sprite>(playerAbilities.GetIconName(AbilitySlots.LeftSlot));
-        AsyncOperationHandle<Sprite> rightIconHandle = Addressables.LoadAssetAsync<Sprite>(playerAbilities.GetIconName(AbilitySlots.RightSlot));
+        AsyncOperationHandle<Sprite> leftIconHandle = playerAbilities.GetIcon(AbilitySlots.LeftSlot).LoadAssetAsync<Sprite>();
+        AsyncOperationHandle<Sprite> rightIconHandle = playerAbilities.GetIcon(AbilitySlots.RightSlot).LoadAssetAsync<Sprite>();
+
         yield return leftIconHandle;
         yield return rightIconHandle;
         if (leftIconHandle.Status == AsyncOperationStatus.Succeeded)
             ability1Icon.sprite = leftIconHandle.Result;
         if (rightIconHandle.Status == AsyncOperationStatus.Succeeded)
             ability2Icon.sprite = rightIconHandle.Result;
-        Addressables.Release(leftIconHandle);
-        Addressables.Release(rightIconHandle);
+        //Addressables.Release(leftIconHandle);
+        //Addressables.Release(rightIconHandle);
     }
     
 }

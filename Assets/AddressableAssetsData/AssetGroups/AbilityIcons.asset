@@ -10,36 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Default Local Group
+  m_Name: AbilityIcons
   m_EditorClassIdentifier: 
-  m_GroupName: Default Local Group
+  m_GroupName: AbilityIcons
   m_Data:
     m_SerializedData: []
-  m_GUID: a55d170a7e130f54e9fa6edaf2bf930f
+  m_GUID: 8e885bf99a7b2c84cba4448e0f035841
   m_SerializeEntries:
-  - m_GUID: 031660090e6b35248a14ae6e588641ab
-    m_Address: energy_burst_icon
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 2c833d82a58eaf249a38e60bd1b5a911
-    m_Address: sniper_shot_icon_placeholder
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: c9d29f32ec9cab54c8066e1723e2c412
-    m_Address: flamethrower_icon
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 75098849eb989624e9fdeab833480fd3
-    m_Address: ice_lance_icon
+    m_Address: Assets/UI/SkillIcons/flamethrower_icon.png
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 62a28b8ede95d6f49a15f176ef5385cf
-    m_Address: piercing_laser
+    m_Address: Assets/UI/SkillIcons/PrecisionAim.png
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 3da816c7ba3fa1c45a737151fe759947, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 91fffb8c7c9316a42803b1d21c351e93, type: 2}
-    - {fileID: 11400000, guid: 708120897e3a318479eab526bd24f70b, type: 2}
+    - {fileID: 11400000, guid: 6487fea489f67714a9aba87609eb3d7c, type: 2}
+    - {fileID: 11400000, guid: 3d7229ecbae791645ba9408a532821b7, type: 2}

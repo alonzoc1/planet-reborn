@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 public class PlayerAbilities : MonoBehaviour
 {
@@ -102,10 +103,10 @@ public class PlayerAbilities : MonoBehaviour
         }
     }
     
-    public string GetIconName(AbilityCooldowns.AbilitySlots slot) {
+    public AssetReferenceSprite GetIcon(AbilityCooldowns.AbilitySlots slot) {
         return slot switch {
-            AbilityCooldowns.AbilitySlots.LeftSlot => primaryAbilityTools.iconName,
-            AbilityCooldowns.AbilitySlots.RightSlot => secondaryAbilityTools.iconName,
+            AbilityCooldowns.AbilitySlots.LeftSlot => primaryAbilityTools.iconReference,
+            AbilityCooldowns.AbilitySlots.RightSlot => secondaryAbilityTools.iconReference,
             _ => null
         };
     }

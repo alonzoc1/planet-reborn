@@ -30355,7 +30355,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1027343534}
-  m_LocalRotation: {x: 0.22975291, y: 0.000000016746089, z: -0.0000000039532155, w: 0.973249}
+  m_LocalRotation: {x: 0.22975291, y: -0.000000016746096, z: 0.0000000039532173, w: 0.973249}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -32218,7 +32218,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1099099599}
-  m_LocalRotation: {x: 0.21201204, y: 1.7522142e-10, z: 3.8418865e-11, w: 0.9772671}
+  m_LocalRotation: {x: 0.21201202, y: 1.9683227e-10, z: 4.310137e-11, w: 0.9772671}
   m_LocalPosition: {x: -125, y: 10.16, z: -132.24983}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -36770,7 +36770,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1265988477}
-  m_LocalRotation: {x: 0.21201201, y: -1e-45, z: -0, w: 0.9772671}
+  m_LocalRotation: {x: 0.212012, y: -1e-45, z: -0, w: 0.9772671}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -46166,7 +46166,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2cd65af938461df4ebf3b619ed6b8604, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c9d29f32ec9cab54c8066e1723e2c412, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -58593,7 +58593,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2cd65af938461df4ebf3b619ed6b8604, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 62a28b8ede95d6f49a15f176ef5385cf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -63215,6 +63215,32 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 784818783, guid: 04d857657bb64434db213293631cfe0d, type: 3}
+      propertyPath: iconReference.m_AssetGUID
+      value: c9d29f32ec9cab54c8066e1723e2c412
+      objectReference: {fileID: 0}
+    - target: {fileID: 784818783, guid: 04d857657bb64434db213293631cfe0d, type: 3}
+      propertyPath: iconReference.m_SubObjectName
+      value: flamethrower_icon
+      objectReference: {fileID: 0}
+    - target: {fileID: 784818783, guid: 04d857657bb64434db213293631cfe0d, type: 3}
+      propertyPath: iconReference.m_SubObjectType
+      value: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      objectReference: {fileID: 0}
+    - target: {fileID: 1799605141, guid: 04d857657bb64434db213293631cfe0d, type: 3}
+      propertyPath: iconReference.m_AssetGUID
+      value: 62a28b8ede95d6f49a15f176ef5385cf
+      objectReference: {fileID: 0}
+    - target: {fileID: 1799605141, guid: 04d857657bb64434db213293631cfe0d, type: 3}
+      propertyPath: iconReference.m_SubObjectName
+      value: PrecisionAim
+      objectReference: {fileID: 0}
+    - target: {fileID: 1799605141, guid: 04d857657bb64434db213293631cfe0d, type: 3}
+      propertyPath: iconReference.m_SubObjectType
+      value: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      objectReference: {fileID: 0}
     - target: {fileID: 1945878209718047070, guid: 04d857657bb64434db213293631cfe0d, type: 3}
       propertyPath: m_Name
       value: Player
