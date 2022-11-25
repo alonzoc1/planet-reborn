@@ -21,6 +21,8 @@ public class PlayerAbilities : MonoBehaviour
     private AbilityTools secondaryAbilityTools; // Same as above but for secondary ability
     private Abilities abilities; // Reference to Abilities script
 
+    private const string IconBasePath = "Skill_Icons/";
+
     private void Start() {
         // Note: We use the Abilities script to get the GameObject references since it is both:
         // - Much faster than using GameObject.Find, and
@@ -103,10 +105,13 @@ public class PlayerAbilities : MonoBehaviour
         }
     }
     
-    public AssetReferenceSprite GetIcon(AbilityCooldowns.AbilitySlots slot) {
+    /**
+     * Loads Sprite object. Depending on image size this can take some time when called dynamically, use this sparingly
+     */
+    public Sprite GetIcon(AbilityCooldowns.AbilitySlots slot) {
         return slot switch {
-            AbilityCooldowns.AbilitySlots.LeftSlot => primaryAbilityTools.iconReference,
-            AbilityCooldowns.AbilitySlots.RightSlot => secondaryAbilityTools.iconReference,
+            AbilityCooldowns.AbilitySlots.LeftSlot => Resources.Load<Sprite>(IconBasePath + primaryAbilityTools.iconName),
+            AbilityCooldowns.AbilitySlots.RightSlot => Resources.Load<Sprite>(IconBasePath + secondaryAbilityTools.iconName),
             _ => null
         };
     }

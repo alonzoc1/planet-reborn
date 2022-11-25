@@ -16,15 +16,7 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 8e885bf99a7b2c84cba4448e0f035841
-  m_SerializeEntries:
-  - m_GUID: c9d29f32ec9cab54c8066e1723e2c412
-    m_Address: Assets/UI/SkillIcons/flamethrower_icon.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 62a28b8ede95d6f49a15f176ef5385cf
-    m_Address: Assets/UI/SkillIcons/PrecisionAim.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 3da816c7ba3fa1c45a737151fe759947, type: 2}
   m_SchemaSet:

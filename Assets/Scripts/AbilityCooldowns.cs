@@ -29,7 +29,7 @@ public class AbilityCooldowns : MonoBehaviour {
         ability1Ready = true;
         ability2Ready = true;
         // Dynamically load ability icons
-        StartCoroutine(SetAbilityIcons(GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAbilities>()));
+        SetAbilityIcons(GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAbilities>());
     }
 
     private void Update() {
@@ -87,18 +87,8 @@ public class AbilityCooldowns : MonoBehaviour {
         }
     }
 
-    private IEnumerator SetAbilityIcons(PlayerAbilities playerAbilities) {
-        AsyncOperationHandle<Sprite> leftIconHandle = playerAbilities.GetIcon(AbilitySlots.LeftSlot).LoadAssetAsync<Sprite>();
-        AsyncOperationHandle<Sprite> rightIconHandle = playerAbilities.GetIcon(AbilitySlots.RightSlot).LoadAssetAsync<Sprite>();
-
-        yield return leftIconHandle;
-        yield return rightIconHandle;
-        if (leftIconHandle.Status == AsyncOperationStatus.Succeeded)
-            ability1Icon.sprite = leftIconHandle.Result;
-        if (rightIconHandle.Status == AsyncOperationStatus.Succeeded)
-            ability2Icon.sprite = rightIconHandle.Result;
-        //Addressables.Release(leftIconHandle);
-        //Addressables.Release(rightIconHandle);
+    private void SetAbilityIcons(PlayerAbilities playerAbilities) {
+        ability1Icon.sprite = playerAbilities.GetIcon(AbilitySlots.LeftSlot);
+        ability2Icon.sprite = playerAbilities.GetIcon(AbilitySlots.RightSlot);
     }
-    
 }
