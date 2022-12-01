@@ -20,7 +20,8 @@ public class PlayerProjectile : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
-        Debug.Log("Bullet collided");
+        if (other.gameObject.CompareTag("Enemy"))
+            other.gameObject.GetComponent<EnemyAI>().TakeDamage(damage);
         Destroy(gameObject);
     }
 }

@@ -137,9 +137,6 @@ public class EnemyAI : MonoBehaviour
         
             TakeDamage(abilityTools.damage);
             recentDamageTaken[abilityTools.abilityName] = abilityTools.activationId;
-        } else if (collision.gameObject.CompareTag("DamageSourceProjectile")) {
-            PlayerProjectile playerProjectile = collision.gameObject.GetComponent<PlayerProjectile>();
-            TakeDamage(playerProjectile.damage);
         }
     }
 
