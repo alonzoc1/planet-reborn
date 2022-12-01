@@ -22,6 +22,8 @@ public class AbilityCooldowns : MonoBehaviour {
     [SerializeField] private float ability2CooldownValue;
     [SerializeField] private bool ability1Ready;
     [SerializeField] private bool ability2Ready;
+    private bool showAbility1CD;
+    private bool showAbility2CD;
     
     private void Start() {
         ability1CooldownValue = 0f;
@@ -29,7 +31,9 @@ public class AbilityCooldowns : MonoBehaviour {
         ability1Ready = true;
         ability2Ready = true;
         // Dynamically load ability icons
-        SetAbilityIcons(GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAbilities>());
+        PlayerAbilities playerAbilities = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAbilities>();
+        SetAbilityIcons(playerAbilities);
+        playerAbilities.AbilityCooldownsReady(); // Run this after all other loading done
     }
 
     private void Update() {
@@ -37,27 +41,31 @@ public class AbilityCooldowns : MonoBehaviour {
             ability1CooldownValue -= Time.deltaTime;
             if (ability1CooldownValue <= 0f)
                 ability1Ready = true;
-            SetUIFill(AbilitySlots.LeftSlot);
+            if (showAbility1CD)
+                SetUIFill(AbilitySlots.LeftSlot);
         }
         if (!ability2Ready) {
             ability2CooldownValue -= Time.deltaTime;
             if (ability2CooldownValue <= 0f)
                 ability2Ready = true;
-            SetUIFill(AbilitySlots.RightSlot);
+            if (showAbility2CD)
+                SetUIFill(AbilitySlots.RightSlot);
         }
     }
     
-    public void StartCooldown(AbilitySlots slot, float cooldown) {
+    public void StartCooldown(AbilitySlots slot, float cooldown, bool showCDUI) {
         switch (slot) {
             case AbilitySlots.LeftSlot:
                 ability1CooldownMax = cooldown;
                 ability1CooldownValue = cooldown;
                 ability1Ready = false;
+                showAbility1CD = showCDUI;
                 break;
             case AbilitySlots.RightSlot:
                 ability2CooldownMax = cooldown;
                 ability2CooldownValue = cooldown;
                 ability2Ready = false;
+                showAbility2CD = showCDUI;
                 break;
         }
     }

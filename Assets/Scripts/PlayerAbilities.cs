@@ -9,7 +9,8 @@ public class PlayerAbilities : MonoBehaviour
     public enum AllAbilities { // This stores all abilities that a player can possibly have
         None,
         Flamethrower,
-        PiercingLaser
+        PiercingLaser,
+        RapidFire
     }
 
     public AllAbilities primaryAbility; // Ability to use on left click
@@ -17,6 +18,7 @@ public class PlayerAbilities : MonoBehaviour
     public List<AllAbilities> passiveAbilities; // Abilities that are having some passive effect
 
     private AbilityCooldowns cooldowns;
+    private bool abilityCooldownsLoaded;
     private AbilityTools primaryAbilityTools; // GameObject containing any effects/colliders/etc of the primary ability
     private AbilityTools secondaryAbilityTools; // Same as above but for secondary ability
     private Abilities abilities; // Reference to Abilities script
@@ -32,17 +34,19 @@ public class PlayerAbilities : MonoBehaviour
         primaryAbilityTools = abilities.GetAbilityGameObject(primaryAbility).GetComponent<AbilityTools>();
         secondaryAbilityTools = abilities.GetAbilityGameObject(secondaryAbility).GetComponent<AbilityTools>();
 
-        cooldowns = GameObject.FindGameObjectWithTag("CooldownsUI").GetComponent<AbilityCooldowns>();
+        abilityCooldownsLoaded = false; // AbilityCooldowns sets this when its ready
     }
 
     private void Update() {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && cooldowns.GetAbilityReady(AbilityCooldowns.AbilitySlots.LeftSlot)) {
+        if (!abilityCooldownsLoaded)
+            return;
+        if (Input.GetKey(KeyCode.Mouse0) && cooldowns.GetAbilityReady(AbilityCooldowns.AbilitySlots.LeftSlot)) {
             // Activate left click ability
-            cooldowns.StartCooldown(AbilityCooldowns.AbilitySlots.LeftSlot, primaryAbilityTools.cooldown);
+            cooldowns.StartCooldown(AbilityCooldowns.AbilitySlots.LeftSlot, primaryAbilityTools.cooldown, !primaryAbilityTools.holdButtonAbility);
             ActivateAbility(primaryAbility, primaryAbilityTools);
-        } else if (Input.GetKeyDown(KeyCode.Mouse1) && cooldowns.GetAbilityReady(AbilityCooldowns.AbilitySlots.RightSlot)) {
+        } else if (Input.GetKey(KeyCode.Mouse1) && cooldowns.GetAbilityReady(AbilityCooldowns.AbilitySlots.RightSlot)) {
             // Activate right click ability
-            cooldowns.StartCooldown(AbilityCooldowns.AbilitySlots.RightSlot, secondaryAbilityTools.cooldown);
+            cooldowns.StartCooldown(AbilityCooldowns.AbilitySlots.RightSlot, secondaryAbilityTools.cooldown, !secondaryAbilityTools.holdButtonAbility);
             ActivateAbility(secondaryAbility, secondaryAbilityTools);
         }
     }
@@ -54,6 +58,9 @@ public class PlayerAbilities : MonoBehaviour
                 break;
             case AllAbilities.PiercingLaser:
                 PiercingLaser(abilityTools);
+                break;
+            case AllAbilities.RapidFire:
+                RapidFire(abilityTools);
                 break;
             default:
                 Debug.Log("Ability not set/found");
@@ -91,6 +98,16 @@ public class PlayerAbilities : MonoBehaviour
             aimedTarget.GetComponent<EnemyAI>().TakeDamage(abilityTools.damage);
     }
 
+    private void RapidFire(AbilityTools abilityTools) {
+        // RapidFire is just always enabled, no need to use EnableForTime coroutine
+        // Spawn a bullet and fire it off
+        Transform abilityToolsTransform = abilityTools.transform;
+        GameObject bullet = Instantiate(abilityTools.abilityPrefab, abilityToolsTransform.position, abilityToolsTransform.rotation);
+        bullet.transform.LookAt(abilityTools.GetAim());
+        bullet.transform.Translate(Vector3.forward * 1.2f);
+        bullet.GetComponent<PlayerProjectile>().Go();
+    }
+
     /**
      * Move trail to a point incredibly quickly for hitscan effects
      */
@@ -114,5 +131,13 @@ public class PlayerAbilities : MonoBehaviour
             AbilityCooldowns.AbilitySlots.RightSlot => Resources.Load<Sprite>(IconBasePath + secondaryAbilityTools.iconName),
             _ => null
         };
+    }
+
+    public void AbilityCooldownsReady() {
+        // AbilityCooldowns calls this when it has finished loading its icons, etc...
+        if (abilityCooldownsLoaded)
+            return;
+        cooldowns = GameObject.FindGameObjectWithTag("CooldownsUI").GetComponent<AbilityCooldowns>();
+        abilityCooldownsLoaded = true;
     }
 }
