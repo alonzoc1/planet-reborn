@@ -11,6 +11,7 @@ TagManager:
   - Coin
   - CooldownsUI
   - GameManager
+  - DamageSourceProjectile
   layers:
   - Default
   - TransparentFX

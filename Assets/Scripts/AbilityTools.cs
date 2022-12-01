@@ -17,6 +17,7 @@ public class AbilityTools : MonoBehaviour {
     public bool aimedAbility; // Ability direction needs to be updated each frame (not needed for projectiles)
     public int damage;
     public float cooldown;
+    public bool holdButtonAbility; // If true, don't show cooldown in UI since ability is meant to be held
     public string iconName; // Filename of icon image in Resources/Skill_Icons folder
     public GameObject abilityPrefab; // Use this if you need to spawn something in for the ability activation
 
