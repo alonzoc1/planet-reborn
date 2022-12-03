@@ -117,21 +117,20 @@ public class EnemyAI : MonoBehaviour
         // This function detects when we're colliding with a damage source, and decides to apply damage
         // if needed. For multi-hit damage sources, we also store the ability name and continue taking damage
         // from it over time until OnTriggerExit removes the collision. This has better performance than OnTriggerStay
-        if (!collision.gameObject.CompareTag("DamageSource"))
-            return;
-        
-        AbilityTools abilityTools = collision.gameObject.GetComponent<AbilityTools>();
-        if (!abilityTools.hitsOnlyOnce) {
-            // Deal with multi-hit attacks in Update
-            collidingWith.TryAdd(abilityTools.abilityName, abilityTools);
-            return;
-        }
+        if (collision.gameObject.CompareTag("DamageSource")) {
+            AbilityTools abilityTools = collision.gameObject.GetComponent<AbilityTools>();
+            if (!abilityTools.hitsOnlyOnce) {
+                // Deal with multi-hit attacks in Update
+                collidingWith.TryAdd(abilityTools.abilityName, abilityTools);
+                return;
+            }
 
-        if (!CanTakeDamageFromSource(abilityTools))
-            return;
+            if (!CanTakeDamageFromSource(abilityTools))
+                return;
         
-        TakeDamage(abilityTools.damage);
-        recentDamageTaken[abilityTools.abilityName] = abilityTools.activationId;
+            TakeDamage(abilityTools.damage);
+            recentDamageTaken[abilityTools.abilityName] = abilityTools.activationId;
+        }
     }
 
     private void OnTriggerExit(Collider collision) {
