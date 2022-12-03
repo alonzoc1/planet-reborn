@@ -109,9 +109,10 @@ GameObject:
   - component: {fileID: 5766822479418972804}
   - component: {fileID: 9006628048007694151}
   - component: {fileID: 3140644890269324249}
+  - component: {fileID: 1737934415514460607}
   m_Layer: 0
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: EnemyDamageSource
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -162,6 +163,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.85061646, y: 0.3371094, z: 0.5215044}
   m_Center: {x: 0.07469177, y: -0.0015971959, z: 0.087087154}
+--- !u!114 &1737934415514460607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5212031276765967276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59bdbaf7ef1de614ab4e2ae6070a8215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 7
+  sound: {fileID: 0}
+  lifetime: 5
+  knockback: 7.5
+  destroyOnHit: 1
 --- !u!1 &8443941626746985518
 GameObject:
   m_ObjectHideFlags: 0

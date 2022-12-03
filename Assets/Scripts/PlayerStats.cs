@@ -21,4 +21,5 @@ public class PlayerStats : BaseStats {
         return state;
     }
     // Note: If searching for ChangeMaxHealth, found in BaseStats (Override removed due to redundancy)
+
 }
