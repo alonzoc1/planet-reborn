@@ -22,6 +22,8 @@ public class AbilityCooldowns : MonoBehaviour {
     [SerializeField] private float ability2CooldownValue;
     [SerializeField] private bool ability1Ready;
     [SerializeField] private bool ability2Ready;
+    private bool ability1Manual;
+    private bool ability2Manual;
     private bool showAbility1CD;
     private bool showAbility2CD;
     
@@ -30,6 +32,8 @@ public class AbilityCooldowns : MonoBehaviour {
         ability2CooldownValue = 0f;
         ability1Ready = true;
         ability2Ready = true;
+        ability1Manual = false;
+        ability2Manual = false;
         // Dynamically load ability icons
         PlayerAbilities playerAbilities = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAbilities>();
         SetAbilityIcons(playerAbilities);
@@ -38,34 +42,40 @@ public class AbilityCooldowns : MonoBehaviour {
 
     private void Update() {
         if (!ability1Ready) {
-            ability1CooldownValue -= Time.deltaTime;
-            if (ability1CooldownValue <= 0f)
-                ability1Ready = true;
+            if (!ability1Manual) {
+                ability1CooldownValue -= Time.deltaTime;
+                if (ability1CooldownValue <= 0f)
+                    ability1Ready = true;
+            }
             if (showAbility1CD)
                 SetUIFill(AbilitySlots.LeftSlot);
         }
         if (!ability2Ready) {
-            ability2CooldownValue -= Time.deltaTime;
-            if (ability2CooldownValue <= 0f)
-                ability2Ready = true;
+            if (!ability2Manual) {
+                ability2CooldownValue -= Time.deltaTime;
+                if (ability2CooldownValue <= 0f)
+                    ability2Ready = true;
+            }
             if (showAbility2CD)
                 SetUIFill(AbilitySlots.RightSlot);
         }
     }
     
-    public void StartCooldown(AbilitySlots slot, float cooldown, bool showCDUI) {
+    public void StartCooldown(AbilitySlots slot, float cooldown, bool showCDUI, bool manualControl) {
         switch (slot) {
             case AbilitySlots.LeftSlot:
                 ability1CooldownMax = cooldown;
                 ability1CooldownValue = cooldown;
                 ability1Ready = false;
                 showAbility1CD = showCDUI;
+                ability1Manual = manualControl;
                 break;
             case AbilitySlots.RightSlot:
                 ability2CooldownMax = cooldown;
                 ability2CooldownValue = cooldown;
                 ability2Ready = false;
                 showAbility2CD = showCDUI;
+                ability2Manual = manualControl;
                 break;
         }
     }
@@ -76,6 +86,20 @@ public class AbilityCooldowns : MonoBehaviour {
             AbilitySlots.RightSlot => ability2Ready,
             _ => false
         };
+    }
+
+    public void ManualReadyAbility(AbilitySlots slot) {
+        if (slot == AbilitySlots.LeftSlot) {
+            ability1Ready = true;
+            ability1CooldownValue = 0f;
+            ability1CooldownMax = 1f;
+        }
+        else if (slot == AbilitySlots.RightSlot) {
+            ability2Ready = true;
+            ability2CooldownValue = 0f;
+            ability1CooldownMax = 1f;
+        }
+        SetUIFill(slot);
     }
 
     private void SetUIFill(AbilitySlots slot) {
