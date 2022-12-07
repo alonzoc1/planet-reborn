@@ -4132,11 +4132,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &242742714 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1946939583190577367, guid: 04d857657bb64434db213293631cfe0d, type: 3}
-  m_PrefabInstance: {fileID: 1945878211360105066}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &254721866
 GameObject:
   m_ObjectHideFlags: 0
@@ -5447,7 +5442,7 @@ Transform:
   - {fileID: 1915059502}
   - {fileID: 1533038894}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &272981039
 Mesh:
@@ -15810,11 +15805,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!4 &605988054 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3575075345118559556, guid: 04d857657bb64434db213293631cfe0d, type: 3}
-  m_PrefabInstance: {fileID: 1945878211360105066}
-  m_PrefabAsset: {fileID: 0}
 --- !u!43 &606625606
 Mesh:
   m_ObjectHideFlags: 0
@@ -25026,7 +25016,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh28590
+  m_Name: pb_Mesh193892
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -25866,7 +25856,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh28660
+  m_Name: pb_Mesh35388
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -30250,59 +30240,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &968509191
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 968509192}
-  - component: {fileID: 968509193}
-  m_Layer: 0
-  m_Name: RapidFire
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &968509192
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 968509191}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 605988054}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &968509193
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 968509191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f2fb2f4bc4c4b54ab182276cf31ed52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityName: 3
-  activationId: 0
-  hitsOnlyOnce: 0
-  aimedAbility: 0
-  damage: 0
-  cooldown: 0.2
-  holdButtonAbility: 1
-  iconName: RapidFire
-  abilityPrefab: {fileID: 8703791535470918648, guid: 85decbd6ac43a164e9842c3d7f9b6c06, type: 3}
 --- !u!43 &979233129
 Mesh:
   m_ObjectHideFlags: 0
@@ -32545,7 +32482,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1099099599}
-  m_LocalRotation: {x: 0.21201204, y: -1.7522142e-10, z: -3.8418865e-11, w: 0.9772671}
+  m_LocalRotation: {x: 0.21201202, y: -1.9683227e-10, z: -4.310137e-11, w: 0.9772671}
   m_LocalPosition: {x: -125, y: 10.16, z: -132.24983}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -36773,7 +36710,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29208
+  m_Name: pb_Mesh29218
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -37040,7 +36977,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1265988477}
-  m_LocalRotation: {x: 0.21201201, y: -1e-45, z: -0, w: 0.9772671}
+  m_LocalRotation: {x: 0.212012, y: -1e-45, z: -0, w: 0.9772671}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -38033,7 +37970,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh28384
+  m_Name: pb_Mesh193396
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -63331,37 +63268,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 784818783, guid: 04d857657bb64434db213293631cfe0d, type: 3}
-      propertyPath: iconName
-      value: flamethrower_icon
-      objectReference: {fileID: 0}
-    - target: {fileID: 784818783, guid: 04d857657bb64434db213293631cfe0d, type: 3}
-      propertyPath: holdButtonAbility
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1713402681, guid: 04d857657bb64434db213293631cfe0d, type: 3}
-      propertyPath: primaryAbility
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1775843170, guid: 04d857657bb64434db213293631cfe0d, type: 3}
-      propertyPath: rapidFire
-      value: 
-      objectReference: {fileID: 968509191}
-    - target: {fileID: 1775843170, guid: 04d857657bb64434db213293631cfe0d, type: 3}
-      propertyPath: flamethrower
-      value: 
-      objectReference: {fileID: 242742714}
-    - target: {fileID: 1799605141, guid: 04d857657bb64434db213293631cfe0d, type: 3}
-      propertyPath: iconName
-      value: PrecisionAim
-      objectReference: {fileID: 0}
     - target: {fileID: 1945878209718047070, guid: 04d857657bb64434db213293631cfe0d, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 1945878209718047071, guid: 04d857657bb64434db213293631cfe0d, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1945878209718047071, guid: 04d857657bb64434db213293631cfe0d, type: 3}
       propertyPath: m_LocalPosition.x
