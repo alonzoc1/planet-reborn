@@ -18,8 +18,10 @@ public class AbilityTools : MonoBehaviour {
     public int damage;
     public float cooldown;
     public bool holdButtonAbility; // If true, don't show cooldown in UI since ability is meant to be held
+    public bool manualCooldown; // If true, AbilityCooldown won't automatically track the cooldown
     public string iconName; // Filename of icon image in Resources/Skill_Icons folder
     public GameObject abilityPrefab; // Use this if you need to spawn something in for the ability activation
+    public float speed; // Used by some abilities that move something
 
     private Abilities abilities;
 

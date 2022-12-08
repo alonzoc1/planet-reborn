@@ -10,7 +10,8 @@ public class PlayerAbilities : MonoBehaviour
         None,
         Flamethrower,
         PiercingLaser,
-        RapidFire
+        RapidFire,
+        Electrorang
     }
 
     public AllAbilities primaryAbility; // Ability to use on left click
@@ -42,16 +43,16 @@ public class PlayerAbilities : MonoBehaviour
             return;
         if (Input.GetKey(KeyCode.Mouse0) && cooldowns.GetAbilityReady(AbilityCooldowns.AbilitySlots.LeftSlot)) {
             // Activate left click ability
-            cooldowns.StartCooldown(AbilityCooldowns.AbilitySlots.LeftSlot, primaryAbilityTools.cooldown, !primaryAbilityTools.holdButtonAbility);
-            ActivateAbility(primaryAbility, primaryAbilityTools);
+            cooldowns.StartCooldown(AbilityCooldowns.AbilitySlots.LeftSlot, primaryAbilityTools.cooldown, !primaryAbilityTools.holdButtonAbility, primaryAbilityTools.manualCooldown);
+            ActivateAbility(primaryAbility, primaryAbilityTools, AbilityCooldowns.AbilitySlots.LeftSlot);
         } else if (Input.GetKey(KeyCode.Mouse1) && cooldowns.GetAbilityReady(AbilityCooldowns.AbilitySlots.RightSlot)) {
             // Activate right click ability
-            cooldowns.StartCooldown(AbilityCooldowns.AbilitySlots.RightSlot, secondaryAbilityTools.cooldown, !secondaryAbilityTools.holdButtonAbility);
-            ActivateAbility(secondaryAbility, secondaryAbilityTools);
+            cooldowns.StartCooldown(AbilityCooldowns.AbilitySlots.RightSlot, secondaryAbilityTools.cooldown, !secondaryAbilityTools.holdButtonAbility, secondaryAbilityTools.manualCooldown);
+            ActivateAbility(secondaryAbility, secondaryAbilityTools, AbilityCooldowns.AbilitySlots.RightSlot);
         }
     }
     
-    private void ActivateAbility(AllAbilities ability, AbilityTools abilityTools) {
+    private void ActivateAbility(AllAbilities ability, AbilityTools abilityTools, AbilityCooldowns.AbilitySlots slot) {
         switch (ability) {
             case AllAbilities.Flamethrower:
                 Flamethrower(abilityTools);
@@ -61,6 +62,9 @@ public class PlayerAbilities : MonoBehaviour
                 break;
             case AllAbilities.RapidFire:
                 RapidFire(abilityTools);
+                break;
+            case AllAbilities.Electrorang:
+                Electrorang(abilityTools, slot);
                 break;
             default:
                 Debug.Log("Ability not set/found");
@@ -104,9 +108,20 @@ public class PlayerAbilities : MonoBehaviour
         Transform abilityToolsTransform = abilityTools.transform;
         GameObject bullet = Instantiate(abilityTools.abilityPrefab, abilityToolsTransform.position, abilityToolsTransform.rotation);
         bullet.transform.LookAt(abilityTools.GetAim());
-        bullet.transform.Translate(Vector3.forward * 1.2f);
+        bullet.transform.Translate(Vector3.forward * .5f);
         bullet.GetComponent<PlayerProjectile>().Go();
     }
+
+    private void Electrorang(AbilityTools abilityTools, AbilityCooldowns.AbilitySlots slot) {
+        // Instantiate Electrorang and position it slightly in front of the player
+        Transform abilityToolsTransform = abilityTools.transform;
+        GameObject electrorang = Instantiate(abilityTools.abilityPrefab, abilityToolsTransform.position, abilityToolsTransform.rotation);
+        electrorang.transform.LookAt(abilityTools.GetAim());
+        electrorang.transform.Translate(Vector3.forward * .5f);
+        // Move it to aimed location and back
+        electrorang.GetComponent<Electrorang>().FireElectrorang(gameObject, abilityTools, cooldowns, slot);
+    }
+    
 
     /**
      * Move trail to a point incredibly quickly for hitscan effects

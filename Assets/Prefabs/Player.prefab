@@ -1,5 +1,60 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &968509191
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 968509192}
+  - component: {fileID: 968509193}
+  m_Layer: 0
+  m_Name: RapidFire
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &968509192
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 968509191}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3575075345118559556}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &968509193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 968509191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f2fb2f4bc4c4b54ab182276cf31ed52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: 3
+  activationId: 0
+  hitsOnlyOnce: 0
+  aimedAbility: 0
+  damage: 0
+  cooldown: 0.2
+  holdButtonAbility: 1
+  manualCooldown: 0
+  iconName: RapidFire
+  abilityPrefab: {fileID: 8703791535470918648, guid: 85decbd6ac43a164e9842c3d7f9b6c06, type: 3}
+  speed: 0
 --- !u!1 &1680221861
 GameObject:
   m_ObjectHideFlags: 0
@@ -31,6 +86,61 @@ Transform:
   m_Father: {fileID: 1945878209718047071}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1725266715
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1725266716}
+  - component: {fileID: 1725266717}
+  m_Layer: 0
+  m_Name: Electrorang
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1725266716
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1725266715}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3575075345118559556}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1725266717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1725266715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f2fb2f4bc4c4b54ab182276cf31ed52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: 4
+  activationId: 0
+  hitsOnlyOnce: 0
+  aimedAbility: 0
+  damage: 20
+  cooldown: 1.1
+  holdButtonAbility: 0
+  manualCooldown: 1
+  iconName: square
+  abilityPrefab: {fileID: 1622290130037268022, guid: a1209e42c27b4d4408ffda6d40978d13, type: 3}
+  speed: 25
 --- !u!1 &1799605139
 GameObject:
   m_ObjectHideFlags: 0
@@ -82,8 +192,10 @@ MonoBehaviour:
   damage: 90
   cooldown: 6
   holdButtonAbility: 0
-  iconName: 
+  manualCooldown: 0
+  iconName: PrecisionAim
   abilityPrefab: {fileID: 8279439706951382942, guid: ffbc88411f67b424eba6ce2f195828fe, type: 3}
+  speed: 0
 --- !u!1 &1945878209718047070
 GameObject:
   m_ObjectHideFlags: 0
@@ -99,6 +211,7 @@ GameObject:
   - component: {fileID: 1713402681}
   - component: {fileID: 4005638920318786540}
   - component: {fileID: 5992265762799864200}
+  - component: {fileID: 54932201065075830}
   - component: {fileID: 1713402678}
   m_Layer: 7
   m_Name: Player
@@ -189,7 +302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7517d985b381ff74aa594d11d670febd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  primaryAbility: 1
+  primaryAbility: 4
   secondaryAbility: 2
   passiveAbilities: 
 --- !u!136 &4005638920318786540
@@ -219,6 +332,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCoins: 0
+--- !u!114 &54932201065075830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945878209718047070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71737c5c8ccea9e4dab4973c19526fe1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  space: 20
+  Collectables: []
 --- !u!114 &1713402678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -445,6 +572,8 @@ Transform:
   m_Children:
   - {fileID: 1950459309182591141}
   - {fileID: 1799605140}
+  - {fileID: 968509192}
+  - {fileID: 1725266716}
   m_Father: {fileID: 1945878209718047071}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -462,7 +591,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flamethrower: {fileID: 1946939583190577367}
   piercingLaser: {fileID: 1799605139}
-  rapidFire: {fileID: 0}
+  rapidFire: {fileID: 968509191}
+  electrorang: {fileID: 1725266715}
   aimedAt: {x: 0, y: 0, z: 0}
 --- !u!1001 &1945878210659860535
 PrefabInstance:
@@ -602,8 +732,10 @@ MonoBehaviour:
   damage: 5
   cooldown: 3
   holdButtonAbility: 0
-  iconName: 
+  manualCooldown: 0
+  iconName: flamethrower_icon
   abilityPrefab: {fileID: 0}
+  speed: 0
 --- !u!4 &1950459309182591141 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4584431484625042, guid: 007c57e2df8e9b144b99f471b84f3d56, type: 3}

@@ -10,6 +10,7 @@ public class VictoryConditions : MonoBehaviour
         None,
         DefeatAll,
         DefeatNumber,
+        TouchVictoryObject,
         //DefeatBoss,
         //SurviveTime,
         //Endless
@@ -39,6 +40,9 @@ public class VictoryConditions : MonoBehaviour
                 if (defeatNumber > enemyCount)
                     defeatNumber = enemyCount;
                 break;
+            case VictoryModes.TouchVictoryObject:
+                EventManager.OnVictoryObjectTouched += VictoryObjectTouched;
+                break;
             case VictoryModes.None:
                 Debug.LogWarning("Victory Mode not set... See GameManager object and set VictoryConditions");
                 break;
@@ -63,6 +67,10 @@ public class VictoryConditions : MonoBehaviour
                     Victory();
                 break;
         }
+    }
+
+    private void VictoryObjectTouched() {
+        Victory();
     }
 
     private int GetEnemyCount() {
