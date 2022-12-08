@@ -31,12 +31,11 @@ public class BaseStats : MonoBehaviour {
     /// <returns>Returns state</returns>
     public virtual State ChangeCurrentHealth(int modifyBy) {
         currentHealth += modifyBy;
-        if (currentHealth <= 0) { // ded
+        if (currentHealth <= 0) { // dead
              currentHealth = 0;
              state = State.Dead;
         } else if (currentHealth > maxHealth)
             currentHealth = maxHealth;
-
         return state;
     }
 
