@@ -27392,7 +27392,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 912224713}
-  m_LocalRotation: {x: 0.19424808, y: 0.000000018870892, z: -0.0000000037368117, w: 0.98095244}
+  m_LocalRotation: {x: 0.19424808, y: -0.000000018870892, z: 0.0000000037368117, w: 0.98095244}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -32482,7 +32482,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1099099599}
-  m_LocalRotation: {x: 0.21201202, y: -1.9683227e-10, z: -4.310137e-11, w: 0.9772671}
+  m_LocalRotation: {x: 0.21201202, y: 1.9683227e-10, z: 4.310137e-11, w: 0.9772671}
   m_LocalPosition: {x: -125, y: 10.16, z: -132.24983}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -35034,7 +35034,7 @@ GameObject:
   - component: {fileID: 1202067519}
   m_Layer: 5
   m_Name: Player Healthbar
-  m_TagString: Untagged
+  m_TagString: PlayerHealthBar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
