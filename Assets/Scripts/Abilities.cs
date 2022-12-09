@@ -11,6 +11,7 @@ public class Abilities : MonoBehaviour {
     public GameObject piercingLaser;
     public GameObject rapidFire;
     public GameObject electrorang;
+    public GameObject plasmaBurst;
 
     private const float DefaultAimDistance = 25;
     private Camera mainCamera;
@@ -27,6 +28,7 @@ public class Abilities : MonoBehaviour {
             PlayerAbilities.AllAbilities.PiercingLaser => piercingLaser,
             PlayerAbilities.AllAbilities.RapidFire => rapidFire,
             PlayerAbilities.AllAbilities.Electrorang => electrorang,
+            PlayerAbilities.AllAbilities.PlasmaBurst => plasmaBurst,
             _ => null
         };
     }
