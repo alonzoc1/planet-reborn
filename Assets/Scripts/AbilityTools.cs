@@ -56,16 +56,7 @@ public class AbilityTools : MonoBehaviour {
         if (particlesPlaying) {
             ParticleSystem.Particle[] particles = new ParticleSystem.Particle[1];
             if (ps.GetParticles(particles, 1) > 0)
-                particleCollider.radius = particles[0].GetCurrentSize3D(ps).x / 2f;
-        }
-    }
-
-    private void OnParticleTrigger() {
-        List<ParticleSystem.Particle> enter = new List<ParticleSystem.Particle>();
-        int count = ps.GetTriggerParticles(ParticleSystemTriggerEventType.Enter, enter);
-        if (count > 0) {
-            float radius = enter[0].GetCurrentSize3D(ps).x / 2f;
-            particleCollider.radius = radius;
+                particleCollider.radius = (particles[0].GetCurrentSize3D(ps).x / 2f) * 1.1f;
         }
     }
 
