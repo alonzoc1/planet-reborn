@@ -11,7 +11,8 @@ public class PlayerAbilities : MonoBehaviour
         Flamethrower,
         PiercingLaser,
         RapidFire,
-        Electrorang
+        Electrorang,
+        PlasmaBurst
     }
 
     public AllAbilities primaryAbility; // Ability to use on left click
@@ -65,6 +66,9 @@ public class PlayerAbilities : MonoBehaviour
                 break;
             case AllAbilities.Electrorang:
                 Electrorang(abilityTools, slot);
+                break;
+            case AllAbilities.PlasmaBurst:
+                PlasmaBurst(abilityTools);
                 break;
             default:
                 Debug.Log("Ability not set/found");
@@ -121,7 +125,28 @@ public class PlayerAbilities : MonoBehaviour
         // Move it to aimed location and back
         electrorang.GetComponent<Electrorang>().FireElectrorang(gameObject, abilityTools, cooldowns, slot);
     }
-    
+
+    private void PlasmaBurst(AbilityTools abilityTools) {
+        // Play the effect
+        abilityTools.IncrementActivationId();
+        ParticleSystem ps = abilityTools.ActivateParticleSystem();
+        // Set potential colliders to all enemies
+        int colliderCount = ps.trigger.colliderCount;
+        List<GameObject> enemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy"));
+        int i;
+        for (i = 0; i < enemies.Count; i++) {
+            if (i < colliderCount)
+                ps.trigger.SetCollider(i, enemies[i].GetComponent<Collider>());
+            else
+                ps.trigger.AddCollider(enemies[i].GetComponent<Collider>());
+        }
+
+        if (i < colliderCount) {
+            for (int y = colliderCount - 1; y >= i; y--) {
+                ps.trigger.RemoveCollider(y);
+            }
+        }
+    }
 
     /**
      * Move trail to a point incredibly quickly for hitscan effects

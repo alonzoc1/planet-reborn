@@ -10,9 +10,7 @@ using UnityEngine.AddressableAssets;
 public class AbilityTools : MonoBehaviour {
     public PlayerAbilities.AllAbilities abilityName;
 
-    public int
-        activationId; // Useful for enemies to track instances of an ability to avoid getting hit twice by same move
-
+    public int activationId; // Useful for enemies to track instances of an ability to avoid getting hit twice by same move
     public bool hitsOnlyOnce;
     public bool aimedAbility; // Ability direction needs to be updated each frame (not needed for projectiles)
     public int damage;
@@ -22,12 +20,16 @@ public class AbilityTools : MonoBehaviour {
     public string iconName; // Filename of icon image in Resources/Skill_Icons folder
     public GameObject abilityPrefab; // Use this if you need to spawn something in for the ability activation
     public float speed; // Used by some abilities that move something
+    public SphereCollider particleCollider;
+    public ParticleSystem ps;
 
     private Abilities abilities;
+    private bool particlesPlaying;
 
     private void Awake() {
         abilities = gameObject.GetComponentInParent<Abilities>();
         activationId = 0;
+        particlesPlaying = false;
     }
 
     public void IncrementActivationId() {
@@ -42,8 +44,33 @@ public class AbilityTools : MonoBehaviour {
         return abilities.GetAimedTarget();
     }
 
+    public ParticleSystem ActivateParticleSystem() {
+        ps.Play();
+        particlesPlaying = true;
+        return ps;
+    }
+
     private void Update() {
         if (aimedAbility)
             gameObject.transform.LookAt(GetAim());
+        if (particlesPlaying) {
+            ParticleSystem.Particle[] particles = new ParticleSystem.Particle[1];
+            if (ps.GetParticles(particles, 1) > 0)
+                particleCollider.radius = particles[0].GetCurrentSize3D(ps).x / 2f;
+        }
+    }
+
+    private void OnParticleTrigger() {
+        List<ParticleSystem.Particle> enter = new List<ParticleSystem.Particle>();
+        int count = ps.GetTriggerParticles(ParticleSystemTriggerEventType.Enter, enter);
+        if (count > 0) {
+            float radius = enter[0].GetCurrentSize3D(ps).x / 2f;
+            particleCollider.radius = radius;
+        }
+    }
+
+    private void OnParticleSystemStopped() {
+        particleCollider.radius = 0f;
+        particlesPlaying = false;
     }
 }
