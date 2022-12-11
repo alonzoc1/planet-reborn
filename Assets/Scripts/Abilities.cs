@@ -12,6 +12,7 @@ public class Abilities : MonoBehaviour {
     public GameObject rapidFire;
     public GameObject electrorang;
     public GameObject plasmaBurst;
+    public GameObject chargeField;
 
     private const float DefaultAimDistance = 25;
     private Camera mainCamera;
@@ -29,6 +30,7 @@ public class Abilities : MonoBehaviour {
             PlayerAbilities.AllAbilities.RapidFire => rapidFire,
             PlayerAbilities.AllAbilities.Electrorang => electrorang,
             PlayerAbilities.AllAbilities.PlasmaBurst => plasmaBurst,
+            PlayerAbilities.AllAbilities.ChargeField => chargeField,
             _ => null
         };
     }

@@ -12,7 +12,8 @@ public class PlayerAbilities : MonoBehaviour
         PiercingLaser,
         RapidFire,
         Electrorang,
-        PlasmaBurst
+        PlasmaBurst,
+        ChargeField
     }
 
     public AllAbilities primaryAbility; // Ability to use on left click
@@ -70,6 +71,9 @@ public class PlayerAbilities : MonoBehaviour
             case AllAbilities.PlasmaBurst:
                 PlasmaBurst(abilityTools);
                 break;
+            case AllAbilities.ChargeField:
+                ChargeField(abilityTools);
+                break;
             default:
                 Debug.Log("Ability not set/found");
                 break;
@@ -88,7 +92,7 @@ public class PlayerAbilities : MonoBehaviour
     }
 
     private void Flamethrower(AbilityTools abilityTools) {
-        StartCoroutine(EnableForTime(2.0f, abilityTools.gameObject, abilityTools));
+        StartCoroutine(EnableForTime(abilityTools.duration, abilityTools.gameObject, abilityTools));
     }
 
     private void PiercingLaser(AbilityTools abilityTools) {
@@ -146,6 +150,16 @@ public class PlayerAbilities : MonoBehaviour
                 ps.trigger.RemoveCollider(y);
             }
         }
+    }
+
+    private void ChargeField(AbilityTools abilityTools) {
+        Vector3 aimedPosition = abilityTools.GetAim();
+        Vector3 projectileSpawnPosition = Vector3.MoveTowards(transform.position, aimedPosition, 2f);
+        GameObject chargeFieldProjectile = Instantiate(abilityTools.abilityPrefab, projectileSpawnPosition, Quaternion.identity);
+        ChargeField chargeField = chargeFieldProjectile.GetComponent<ChargeField>();
+        chargeField.Setup(abilityTools);
+        // yeet
+        chargeField.ThrowProjectile(aimedPosition);
     }
 
     /**

@@ -50,6 +50,7 @@ MonoBehaviour:
   aimedAbility: 0
   damage: 0
   cooldown: 0.2
+  duration: 0
   holdButtonAbility: 1
   manualCooldown: 0
   iconName: RapidFire
@@ -4948,6 +4949,7 @@ MonoBehaviour:
   aimedAbility: 0
   damage: 30
   cooldown: 5
+  duration: 0
   holdButtonAbility: 0
   manualCooldown: 0
   iconName: square
@@ -5049,6 +5051,7 @@ MonoBehaviour:
   aimedAbility: 0
   damage: 20
   cooldown: 1.1
+  duration: 0
   holdButtonAbility: 0
   manualCooldown: 1
   iconName: square
@@ -5106,10 +5109,69 @@ MonoBehaviour:
   aimedAbility: 0
   damage: 90
   cooldown: 6
+  duration: 0
   holdButtonAbility: 0
   manualCooldown: 0
   iconName: PrecisionAim
   abilityPrefab: {fileID: 8279439706951382942, guid: ffbc88411f67b424eba6ce2f195828fe, type: 3}
+  speed: 0
+  particleCollider: {fileID: 0}
+  ps: {fileID: 0}
+--- !u!1 &1888452871
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1888452872}
+  - component: {fileID: 1888452873}
+  m_Layer: 0
+  m_Name: ChargeField
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1888452872
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888452871}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3575075345118559556}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1888452873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888452871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f2fb2f4bc4c4b54ab182276cf31ed52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: 6
+  activationId: 0
+  hitsOnlyOnce: 0
+  aimedAbility: 0
+  damage: 10
+  cooldown: 10
+  duration: 6
+  holdButtonAbility: 0
+  manualCooldown: 0
+  iconName: square
+  abilityPrefab: {fileID: 68604340315218120, guid: cb8346c85a40f3c4a950b2d29ca26982, type: 3}
   speed: 0
   particleCollider: {fileID: 0}
   ps: {fileID: 0}
@@ -5220,7 +5282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   primaryAbility: 4
-  secondaryAbility: 5
+  secondaryAbility: 6
   passiveAbilities: 
 --- !u!136 &4005638920318786540
 CapsuleCollider:
@@ -5492,6 +5554,7 @@ Transform:
   - {fileID: 968509192}
   - {fileID: 1725266716}
   - {fileID: 1317677127}
+  - {fileID: 1888452872}
   m_Father: {fileID: 1945878209718047071}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5512,6 +5575,7 @@ MonoBehaviour:
   rapidFire: {fileID: 968509191}
   electrorang: {fileID: 1725266715}
   plasmaBurst: {fileID: 1317677126}
+  chargeField: {fileID: 1888452871}
   aimedAt: {x: 0, y: 0, z: 0}
 --- !u!1001 &1945878210659860535
 PrefabInstance:
@@ -5650,6 +5714,7 @@ MonoBehaviour:
   aimedAbility: 1
   damage: 5
   cooldown: 3
+  duration: 2.5
   holdButtonAbility: 0
   manualCooldown: 0
   iconName: flamethrower_icon
