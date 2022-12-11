@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,13 @@ public class BaseStats : MonoBehaviour {
         Stunned,
         Dead
     }
-    
+
+    public enum Buffs {
+        SpeedBuff
+    }
+
+    public Dictionary<Buffs, Vector3> activeBuffs = new Dictionary<Buffs, Vector3>();
+
     public float movementSpeed = 5.0f;
     public int maxHealth = 100;
     public State state = State.Normal;
@@ -22,6 +29,27 @@ public class BaseStats : MonoBehaviour {
 
     public int GetCurrentHealth() {
         return currentHealth;
+    }
+
+    private void Update() {
+        if (activeBuffs.Count > 0) {
+            // Run down cooldowns on any active buffs
+            Dictionary<Buffs, Vector3> newBuffs = new Dictionary<Buffs, Vector3>();
+            foreach (KeyValuePair<Buffs, Vector3> kvp in activeBuffs) {
+                Vector3 buff = activeBuffs[kvp.Key];
+                buff.x -= Time.deltaTime;
+                if (buff.x >= 0f)
+                    newBuffs[kvp.Key] = buff;
+            }
+
+            activeBuffs = newBuffs;
+        }
+    }
+
+    public float GetMovementSpeed() {
+        if (activeBuffs.ContainsKey(Buffs.SpeedBuff))
+            return movementSpeed * activeBuffs[Buffs.SpeedBuff].y;
+        return movementSpeed;
     }
 
     /// <summary>

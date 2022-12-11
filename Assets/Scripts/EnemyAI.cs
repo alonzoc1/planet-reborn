@@ -33,13 +33,13 @@ public class EnemyAI : MonoBehaviour
         player = GameObject.Find("Player").transform;
         enemy = GetComponent<NavMeshAgent>();
         stats = GetComponent<EnemyStats>();
-        enemy.speed = stats.movementSpeed;
+        enemy.speed = stats.GetMovementSpeed();
         weapon = new List<GameObject>(GameObject.FindGameObjectsWithTag("EnemyWeapon"))
             .Find(g => g.transform.IsChildOf( this.transform));
     }
 
-    private void Update()
-    {
+    private void Update() {
+        enemy.speed = stats.GetMovementSpeed(); // Later change this to only update as needed
         //Check for sight and attack range
         playerInSight = Physics.CheckSphere(transform.position, stats.sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, stats.attackRange, whatIsPlayer);

@@ -23,6 +23,7 @@ public class Electrorang : MonoBehaviour {
 
     private void Start() {
         player = GameObject.FindWithTag("Player");
+        hitbox.collectStats = false;
     }
 
     private void Update() {
@@ -77,6 +78,7 @@ public class Electrorang : MonoBehaviour {
         GameObject lightning;
         LightningBoltScript lbs;
         foreach (EnemyAI enemy in hitbox.collisions) {
+            if (enemy == null) continue;
             lightning = Instantiate(lightningPrefab, transform);
             lbs = lightning.GetComponent<LightningBoltScript>();
             lbs.StartPosition = transform.position;
