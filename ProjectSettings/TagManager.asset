@@ -15,6 +15,8 @@ TagManager:
   - PlayerDamageSource
   - EnemyDamageSource
   - EnemyWeapon
+  - DamageSourceProjectile
+  - GameOverUI
   layers:
   - Default
   - TransparentFX

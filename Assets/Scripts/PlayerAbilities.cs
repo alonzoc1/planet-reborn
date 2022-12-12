@@ -41,7 +41,7 @@ public class PlayerAbilities : MonoBehaviour
     }
 
     private void Update() {
-        if (!abilityCooldownsLoaded)
+        if (!abilityCooldownsLoaded || Time.timeScale == 0)
             return;
         if (Input.GetKey(KeyCode.Mouse0) && cooldowns.GetAbilityReady(AbilityCooldowns.AbilitySlots.LeftSlot)) {
             // Activate left click ability
