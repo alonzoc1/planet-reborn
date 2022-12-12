@@ -141,6 +141,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   walkPointRange: 8
+  weapon: {fileID: 0}
 --- !u!195 &8417308258820503593
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -315,7 +316,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2391485894202631850, guid: 973b96fe46f88484b9b652753d82a94e, type: 3}
       propertyPath: projectileSpeed
-      value: 2.5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4748348501528075148, guid: 973b96fe46f88484b9b652753d82a94e, type: 3}
       propertyPath: m_RootOrder

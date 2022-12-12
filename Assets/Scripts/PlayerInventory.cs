@@ -12,7 +12,6 @@ public class PlayerInventory : MonoBehaviour
 
     private void Start() {
         coinCounter = GameObject.FindWithTag("MainCanvas").GetComponent<CoinCounter>();
-        healthBar = GameObject.FindWithTag("PlayerHealthBar").GetComponent<PlayerHealthBarUI>();
         currentCoins = 0; // Get this from a persistant source in the future
         coinCounter.UpdateCount(currentCoins);
     }
