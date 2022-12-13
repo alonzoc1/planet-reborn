@@ -116,7 +116,7 @@ public class PlayerAbilities : MonoBehaviour
         Transform abilityToolsTransform = abilityTools.transform;
         GameObject bullet = Instantiate(abilityTools.abilityPrefab, abilityToolsTransform.position, abilityToolsTransform.rotation);
         bullet.transform.LookAt(abilityTools.GetAim());
-        bullet.transform.Translate(Vector3.forward * .5f);
+        bullet.transform.Translate(Vector3.forward * 2f);
         bullet.GetComponent<PlayerProjectile>().Go();
     }
 
@@ -125,7 +125,7 @@ public class PlayerAbilities : MonoBehaviour
         Transform abilityToolsTransform = abilityTools.transform;
         GameObject electrorang = Instantiate(abilityTools.abilityPrefab, abilityToolsTransform.position, abilityToolsTransform.rotation);
         electrorang.transform.LookAt(abilityTools.GetAim());
-        electrorang.transform.Translate(Vector3.forward * .5f);
+        electrorang.transform.Translate(Vector3.forward * 2f);
         // Move it to aimed location and back
         electrorang.GetComponent<Electrorang>().FireElectrorang(gameObject, abilityTools, cooldowns, slot);
     }
