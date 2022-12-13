@@ -48,7 +48,7 @@ public class AbilityCooldowns : MonoBehaviour {
                     ability1Ready = true;
             }
             if (showAbility1CD)
-                SetUIFill(AbilitySlots.LeftSlot);
+                SetUIFill(AbilitySlots.LeftSlot, false);
         }
         if (!ability2Ready) {
             if (!ability2Manual) {
@@ -57,7 +57,7 @@ public class AbilityCooldowns : MonoBehaviour {
                     ability2Ready = true;
             }
             if (showAbility2CD)
-                SetUIFill(AbilitySlots.RightSlot);
+                SetUIFill(AbilitySlots.RightSlot, false);
         }
     }
     
@@ -99,23 +99,53 @@ public class AbilityCooldowns : MonoBehaviour {
             ability2CooldownValue = 0f;
             ability1CooldownMax = 1f;
         }
-        SetUIFill(slot);
+        SetUIFill(slot, false);
     }
 
-    private void SetUIFill(AbilitySlots slot) {
-        switch (slot) {
-            case AbilitySlots.LeftSlot when ability1Ready:
-                ability1Cooldown.fillAmount = 0f;
-                break;
-            case AbilitySlots.LeftSlot:
-                ability1Cooldown.fillAmount = ability1CooldownValue / ability1CooldownMax;
-                break;
-            case AbilitySlots.RightSlot when ability2Ready:
-                ability2Cooldown.fillAmount = 0f;
-                break;
-            case AbilitySlots.RightSlot:
-                ability2Cooldown.fillAmount = ability2CooldownValue / ability2CooldownMax;
-                break;
+    /*
+    // Saving this in case we need something like it later, but for now don't use this since it looks dumb
+    public void PulseAbilityUse(AbilitySlots slot) {
+        if (slot == AbilitySlots.LeftSlot) {
+            StartCoroutine(PulseAbilityUI(slot, .1f));
+        } else if (slot == AbilitySlots.RightSlot) {
+            StartCoroutine(PulseAbilityUI(slot, .1f));
+        }
+    }
+
+    private IEnumerator PulseAbilityUI(AbilitySlots slot, float pulseTime) {
+        SetUIFill(slot, true);
+        yield return new WaitForSeconds(pulseTime);
+        SetUIFill(slot, false);
+    }
+    */
+
+    private void SetUIFill(AbilitySlots slot, bool pulse) {
+        // If pulse we just want to visually shade over the icon for a bit, not actually show the correct CD value
+        if (pulse) { // sorry this is lazy and could be cleaner :) - Alonzo
+            switch (slot) {
+                case AbilitySlots.LeftSlot:
+                    ability1Cooldown.fillAmount = 1f;
+                    break;
+                case AbilitySlots.RightSlot:
+                    ability2Cooldown.fillAmount = 1f;
+                    break;
+            }
+        }
+        else {
+            switch (slot) {
+                case AbilitySlots.LeftSlot when ability1Ready:
+                    ability1Cooldown.fillAmount = 0f;
+                    break;
+                case AbilitySlots.LeftSlot:
+                    ability1Cooldown.fillAmount = ability1CooldownValue / ability1CooldownMax;
+                    break;
+                case AbilitySlots.RightSlot when ability2Ready:
+                    ability2Cooldown.fillAmount = 0f;
+                    break;
+                case AbilitySlots.RightSlot:
+                    ability2Cooldown.fillAmount = ability2CooldownValue / ability2CooldownMax;
+                    break;
+            }
         }
     }
 

@@ -16,8 +16,8 @@ public class PlayerAbilities : MonoBehaviour
         ChargeField
     }
 
-    public AllAbilities primaryAbility; // Ability to use on left click
-    public AllAbilities secondaryAbility; // Ability to use on right click
+    private AllAbilities primaryAbility; // Ability to use on left click
+    private AllAbilities secondaryAbility; // Ability to use on right click
     public List<AllAbilities> passiveAbilities; // Abilities that are having some passive effect
 
     private AbilityCooldowns cooldowns;
@@ -33,6 +33,15 @@ public class PlayerAbilities : MonoBehaviour
         // - Much faster than using GameObject.Find, and
         // - GameObject.Find cannot even 'find' disabled GameObjects
         // Note 2: This Start() must run before AbilityCooldowns Start()!
+        if (LoadoutPersist.Instance == null) {
+            Debug.Log("Did not get abilities from start menu, defaulting to Rapid Fire/Plasma Burst");
+            primaryAbility = AllAbilities.RapidFire;
+            secondaryAbility = AllAbilities.PlasmaBurst;
+        }
+        else {
+            primaryAbility = LoadoutPersist.Instance.GetLeft();
+            secondaryAbility = LoadoutPersist.Instance.GetRight();
+        }
         abilities = gameObject.GetComponentInChildren<Abilities>();
         primaryAbilityTools = abilities.GetAbilityGameObject(primaryAbility).GetComponent<AbilityTools>();
         secondaryAbilityTools = abilities.GetAbilityGameObject(secondaryAbility).GetComponent<AbilityTools>();
@@ -52,6 +61,14 @@ public class PlayerAbilities : MonoBehaviour
             cooldowns.StartCooldown(AbilityCooldowns.AbilitySlots.RightSlot, secondaryAbilityTools.cooldown, !secondaryAbilityTools.holdButtonAbility, secondaryAbilityTools.manualCooldown);
             ActivateAbility(secondaryAbility, secondaryAbilityTools, AbilityCooldowns.AbilitySlots.RightSlot);
         }
+    }
+
+    public AllAbilities GetPrimaryAbility() {
+        return primaryAbility;
+    }
+    
+    public AllAbilities GetSecondaryAbility() {
+        return secondaryAbility;
     }
     
     private void ActivateAbility(AllAbilities ability, AbilityTools abilityTools, AbilityCooldowns.AbilitySlots slot) {
