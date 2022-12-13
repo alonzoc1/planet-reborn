@@ -16,8 +16,8 @@ public class CooldownPickup : Pickup
         player = GameObject.Find("Player");
         playAbilities = player.GetComponent<PlayerAbilities>();
         abilities = player.GetComponentInChildren<Abilities>();
-        primaryAbilityTools = abilities.GetAbilityGameObject(playAbilities.primaryAbility).GetComponent<AbilityTools>();
-        secondaryAbilityTools = abilities.GetAbilityGameObject(playAbilities.secondaryAbility).GetComponent<AbilityTools>();
+        primaryAbilityTools = abilities.GetAbilityGameObject(playAbilities.GetPrimaryAbility()).GetComponent<AbilityTools>();
+        secondaryAbilityTools = abilities.GetAbilityGameObject(playAbilities.GetSecondaryAbility()).GetComponent<AbilityTools>();
 
         primaryAbilityTools.cooldown = primaryAbilityTools.cooldown - 1;
         secondaryAbilityTools.cooldown = secondaryAbilityTools.cooldown - 1;
