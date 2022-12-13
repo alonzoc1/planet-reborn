@@ -208,7 +208,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6960613254403363536}
-  - component: {fileID: 1948652907887975309}
   - component: {fileID: 1233684592344144481}
   - component: {fileID: -2307694650939668659}
   - component: {fileID: 4334526575606670353}
@@ -235,19 +234,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1948652907887975309
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8703791535470918648}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.113235354, y: 0.11301535, z: 0.2653818}
-  m_Center: {x: -0.0022045225, y: -0.0010623652, z: 0.022657484}
 --- !u!96 &1233684592344144481
 TrailRenderer:
   serializedVersion: 2

@@ -114,9 +114,11 @@ public class PlayerAbilities : MonoBehaviour
         // RapidFire is just always enabled, no need to use EnableForTime coroutine
         // Spawn a bullet and fire it off
         Transform abilityToolsTransform = abilityTools.transform;
+        Vector3 abilityToolsOldPos = abilityToolsTransform.position;
+        abilityToolsTransform.LookAt(abilityTools.GetAim());
+        abilityToolsTransform.Translate(Vector3.forward * 2f);
         GameObject bullet = Instantiate(abilityTools.abilityPrefab, abilityToolsTransform.position, abilityToolsTransform.rotation);
-        bullet.transform.LookAt(abilityTools.GetAim());
-        bullet.transform.Translate(Vector3.forward * 2f);
+        abilityToolsTransform.position = abilityToolsOldPos;
         bullet.GetComponent<PlayerProjectile>().Go();
     }
 
