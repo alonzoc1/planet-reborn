@@ -843,7 +843,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: 86fd89ce12d1e0f4eb2d11281dc4a521, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1730,7 +1730,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: 86fd89ce12d1e0f4eb2d11281dc4a521, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2617,7 +2617,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: 86fd89ce12d1e0f4eb2d11281dc4a521, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3560,7 +3560,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: 86fd89ce12d1e0f4eb2d11281dc4a521, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3904,7 +3904,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: 86fd89ce12d1e0f4eb2d11281dc4a521, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4791,7 +4791,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: 86fd89ce12d1e0f4eb2d11281dc4a521, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5678,7 +5678,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: 86fd89ce12d1e0f4eb2d11281dc4a521, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6565,7 +6565,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: 86fd89ce12d1e0f4eb2d11281dc4a521, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7452,7 +7452,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: 86fd89ce12d1e0f4eb2d11281dc4a521, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8339,7 +8339,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: 86fd89ce12d1e0f4eb2d11281dc4a521, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9226,7 +9226,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: 86fd89ce12d1e0f4eb2d11281dc4a521, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10113,7 +10113,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: 86fd89ce12d1e0f4eb2d11281dc4a521, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11000,7 +11000,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: 86fd89ce12d1e0f4eb2d11281dc4a521, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11887,7 +11887,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: 86fd89ce12d1e0f4eb2d11281dc4a521, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -12774,7 +12774,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: 86fd89ce12d1e0f4eb2d11281dc4a521, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13661,7 +13661,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: 86fd89ce12d1e0f4eb2d11281dc4a521, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13716,6 +13716,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pipe Connector (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 2384110205086913580, guid: e9e16fb0330397b4aa897729f61105b9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 86fd89ce12d1e0f4eb2d11281dc4a521, type: 2}
     - target: {fileID: 2630940935903800799, guid: e9e16fb0330397b4aa897729f61105b9, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -13806,6 +13810,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pipe Connector (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 2384110205086913580, guid: e9e16fb0330397b4aa897729f61105b9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 86fd89ce12d1e0f4eb2d11281dc4a521, type: 2}
     - target: {fileID: 2630940935903800799, guid: e9e16fb0330397b4aa897729f61105b9, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -14072,6 +14080,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pipe Connector
       objectReference: {fileID: 0}
+    - target: {fileID: 2384110205086913580, guid: e9e16fb0330397b4aa897729f61105b9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 86fd89ce12d1e0f4eb2d11281dc4a521, type: 2}
     - target: {fileID: 2630940935903800799, guid: e9e16fb0330397b4aa897729f61105b9, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -14426,6 +14438,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pipe Connector (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2384110205086913580, guid: e9e16fb0330397b4aa897729f61105b9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 86fd89ce12d1e0f4eb2d11281dc4a521, type: 2}
     - target: {fileID: 2630940935903800799, guid: e9e16fb0330397b4aa897729f61105b9, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -14568,6 +14584,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pipe Connector (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2384110205086913580, guid: e9e16fb0330397b4aa897729f61105b9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 86fd89ce12d1e0f4eb2d11281dc4a521, type: 2}
     - target: {fileID: 2630940935903800799, guid: e9e16fb0330397b4aa897729f61105b9, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -15054,6 +15074,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pipe Connector (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 2384110205086913580, guid: e9e16fb0330397b4aa897729f61105b9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 86fd89ce12d1e0f4eb2d11281dc4a521, type: 2}
     - target: {fileID: 2630940935903800799, guid: e9e16fb0330397b4aa897729f61105b9, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -15540,6 +15564,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pipe Connector (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 2384110205086913580, guid: e9e16fb0330397b4aa897729f61105b9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 86fd89ce12d1e0f4eb2d11281dc4a521, type: 2}
     - target: {fileID: 2630940935903800799, guid: e9e16fb0330397b4aa897729f61105b9, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -15974,6 +16002,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pipe Connector (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 2384110205086913580, guid: e9e16fb0330397b4aa897729f61105b9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 86fd89ce12d1e0f4eb2d11281dc4a521, type: 2}
     - target: {fileID: 2630940935903800799, guid: e9e16fb0330397b4aa897729f61105b9, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -16460,6 +16492,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pipe Connector (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 2384110205086913580, guid: e9e16fb0330397b4aa897729f61105b9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 86fd89ce12d1e0f4eb2d11281dc4a521, type: 2}
     - target: {fileID: 2630940935903800799, guid: e9e16fb0330397b4aa897729f61105b9, type: 3}
       propertyPath: m_Mesh
       value: 

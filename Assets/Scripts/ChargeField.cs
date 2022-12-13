@@ -55,7 +55,6 @@ public class ChargeField : MonoBehaviour {
     }
 
     private void DeployChargeField() {
-        Debug.Log("Deploying Charge Field!");
         indicator.SetActive(true);
         isDeployed = true;
         timeLeft = abilityTools.duration;

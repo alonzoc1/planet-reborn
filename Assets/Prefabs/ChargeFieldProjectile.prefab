@@ -49,7 +49,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f717c9cb13bf8b4eb2ea04a7cadcfb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  device: {fileID: 68604341088819340}
   indicator: {fileID: 68604341301351748}
   hitboxObj: {fileID: 6152503019660165310}
   lightningPrefab: {fileID: 106988, guid: a9892f6a83fd8d4468ce0c8a3d09d3cd, type: 3}
@@ -144,7 +143,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 425e79960545a874fa89fa62563c87b8, type: 2}
+  - {fileID: 2100000, guid: b0fefd4a2ccb2854eb3eb0f31c8f9dae, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -309,3 +308,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d1e82b3d47d1aa449b0ce6ec5bdf674, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInHitbox: 0
+  collectStats: 0
