@@ -1,12 +1,11 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 public class EnemyAI : MonoBehaviour
 {
-    [Tooltip("Prefab that serves as the projectile")]
-    public GameObject projectile;
     [Tooltip("Set appropriate layer respectively")]
     public LayerMask whatIsGround, whatIsPlayer;
     [Tooltip("How far the AI can search at a time")]
@@ -18,13 +17,11 @@ public class EnemyAI : MonoBehaviour
     private Transform player;
     private NavMeshAgent enemy;
     private EnemyStats stats;
+    [SerializeReference]
+    private GameObject weapon;
     // Variables
     private bool playerInSight, playerInAttackRange;
     private bool isAttacking;
-    [Tooltip("The angle the projectile is shot at")]
-    public float projectileArc;
-    [Tooltip("The speed the projectile is shot at")]
-    public float projectileSpeed;
     private Dictionary<PlayerAbilities.AllAbilities, int> recentDamageTaken;
     private Dictionary<PlayerAbilities.AllAbilities, AbilityTools> collidingWith;
     private float damageTimeBuffer;
@@ -36,18 +33,19 @@ public class EnemyAI : MonoBehaviour
         player = GameObject.Find("Player").transform;
         enemy = GetComponent<NavMeshAgent>();
         stats = GetComponent<EnemyStats>();
-        enemy.speed = stats.movementSpeed;
+        enemy.speed = stats.GetMovementSpeed();
+        weapon = new List<GameObject>(GameObject.FindGameObjectsWithTag("EnemyWeapon"))
+            .Find(g => g.transform.IsChildOf( this.transform));
     }
 
-    private void Update()
-    {
+    private void Update() {
+        enemy.speed = stats.GetMovementSpeed(); // Later change this to only update as needed
         //Check for sight and attack range
         playerInSight = Physics.CheckSphere(transform.position, stats.sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, stats.attackRange, whatIsPlayer);
-
         if (!playerInSight && !playerInAttackRange) Searching();
         if (playerInSight && !playerInAttackRange) ChasePlayer();
-        if (playerInAttackRange && playerInSight) AttackPlayer();
+        if (playerInAttackRange && playerInSight) StartCoroutine(AttackPlayer());
 
         // Deal one tick of colliding multi-hit damage 5 times a second
         damageTimeBuffer += Time.deltaTime;
@@ -97,23 +95,18 @@ public class EnemyAI : MonoBehaviour
         enemy.SetDestination(player.position);
     }
 
-    private void AttackPlayer()
+    IEnumerator AttackPlayer()
     {
+        // check if we are already attacking
+        if (isAttacking) yield break;
         //Make sure enemy doesn't move
         enemy.SetDestination(transform.position);
         transform.LookAt(player);
-
-        if (isAttacking) return;
-        // Creates object to shot
-        Rigidbody rb = Instantiate(projectile, transform.position, transform.rotation).GetComponent<Rigidbody>();
-        Physics.IgnoreCollision(projectile.GetComponent<Collider>(), GetComponent<Collider>(),true);
-        // Adds velocity to projectile
-        // Variables may be adjusted for accurate shooting
-        rb.AddForce(transform.forward * projectileSpeed, ForceMode.Impulse);
-        rb.AddForce(transform.up * projectileArc, ForceMode.Impulse);
+        weapon.GetComponent<EnemyAttacks>().performAttack(player, enemy);
         isAttacking = true;
         // Delays the next attack 
         Invoke(nameof(ResetAttack), stats.attackSpeed);
+        yield return new WaitUntil(() => !isAttacking);
     }
     private void ResetAttack()
     {

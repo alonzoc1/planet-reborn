@@ -11,7 +11,12 @@ TagManager:
   - Coin
   - CooldownsUI
   - GameManager
+  - PlayerHealthBar
+  - PlayerDamageSource
+  - EnemyDamageSource
+  - EnemyWeapon
   - DamageSourceProjectile
+  - GameOverUI
   layers:
   - Default
   - TransparentFX

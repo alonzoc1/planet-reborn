@@ -10,7 +10,10 @@ public class PlayerAbilities : MonoBehaviour
         None,
         Flamethrower,
         PiercingLaser,
-        RapidFire
+        RapidFire,
+        Electrorang,
+        PlasmaBurst,
+        ChargeField
     }
 
     public AllAbilities primaryAbility; // Ability to use on left click
@@ -38,20 +41,20 @@ public class PlayerAbilities : MonoBehaviour
     }
 
     private void Update() {
-        if (!abilityCooldownsLoaded)
+        if (!abilityCooldownsLoaded || Time.timeScale == 0)
             return;
         if (Input.GetKey(KeyCode.Mouse0) && cooldowns.GetAbilityReady(AbilityCooldowns.AbilitySlots.LeftSlot)) {
             // Activate left click ability
-            cooldowns.StartCooldown(AbilityCooldowns.AbilitySlots.LeftSlot, primaryAbilityTools.cooldown, !primaryAbilityTools.holdButtonAbility);
-            ActivateAbility(primaryAbility, primaryAbilityTools);
+            cooldowns.StartCooldown(AbilityCooldowns.AbilitySlots.LeftSlot, primaryAbilityTools.cooldown, !primaryAbilityTools.holdButtonAbility, primaryAbilityTools.manualCooldown);
+            ActivateAbility(primaryAbility, primaryAbilityTools, AbilityCooldowns.AbilitySlots.LeftSlot);
         } else if (Input.GetKey(KeyCode.Mouse1) && cooldowns.GetAbilityReady(AbilityCooldowns.AbilitySlots.RightSlot)) {
             // Activate right click ability
-            cooldowns.StartCooldown(AbilityCooldowns.AbilitySlots.RightSlot, secondaryAbilityTools.cooldown, !secondaryAbilityTools.holdButtonAbility);
-            ActivateAbility(secondaryAbility, secondaryAbilityTools);
+            cooldowns.StartCooldown(AbilityCooldowns.AbilitySlots.RightSlot, secondaryAbilityTools.cooldown, !secondaryAbilityTools.holdButtonAbility, secondaryAbilityTools.manualCooldown);
+            ActivateAbility(secondaryAbility, secondaryAbilityTools, AbilityCooldowns.AbilitySlots.RightSlot);
         }
     }
     
-    private void ActivateAbility(AllAbilities ability, AbilityTools abilityTools) {
+    private void ActivateAbility(AllAbilities ability, AbilityTools abilityTools, AbilityCooldowns.AbilitySlots slot) {
         switch (ability) {
             case AllAbilities.Flamethrower:
                 Flamethrower(abilityTools);
@@ -61,6 +64,15 @@ public class PlayerAbilities : MonoBehaviour
                 break;
             case AllAbilities.RapidFire:
                 RapidFire(abilityTools);
+                break;
+            case AllAbilities.Electrorang:
+                Electrorang(abilityTools, slot);
+                break;
+            case AllAbilities.PlasmaBurst:
+                PlasmaBurst(abilityTools);
+                break;
+            case AllAbilities.ChargeField:
+                ChargeField(abilityTools);
                 break;
             default:
                 Debug.Log("Ability not set/found");
@@ -80,7 +92,7 @@ public class PlayerAbilities : MonoBehaviour
     }
 
     private void Flamethrower(AbilityTools abilityTools) {
-        StartCoroutine(EnableForTime(2.0f, abilityTools.gameObject, abilityTools));
+        StartCoroutine(EnableForTime(abilityTools.duration, abilityTools.gameObject, abilityTools));
     }
 
     private void PiercingLaser(AbilityTools abilityTools) {
@@ -104,8 +116,50 @@ public class PlayerAbilities : MonoBehaviour
         Transform abilityToolsTransform = abilityTools.transform;
         GameObject bullet = Instantiate(abilityTools.abilityPrefab, abilityToolsTransform.position, abilityToolsTransform.rotation);
         bullet.transform.LookAt(abilityTools.GetAim());
-        bullet.transform.Translate(Vector3.forward * 1.2f);
+        bullet.transform.Translate(Vector3.forward * 2f);
         bullet.GetComponent<PlayerProjectile>().Go();
+    }
+
+    private void Electrorang(AbilityTools abilityTools, AbilityCooldowns.AbilitySlots slot) {
+        // Instantiate Electrorang and position it slightly in front of the player
+        Transform abilityToolsTransform = abilityTools.transform;
+        GameObject electrorang = Instantiate(abilityTools.abilityPrefab, abilityToolsTransform.position, abilityToolsTransform.rotation);
+        electrorang.transform.LookAt(abilityTools.GetAim());
+        electrorang.transform.Translate(Vector3.forward * 2f);
+        // Move it to aimed location and back
+        electrorang.GetComponent<Electrorang>().FireElectrorang(gameObject, abilityTools, cooldowns, slot);
+    }
+
+    private void PlasmaBurst(AbilityTools abilityTools) {
+        // Play the effect
+        abilityTools.IncrementActivationId();
+        ParticleSystem ps = abilityTools.ActivateParticleSystem();
+        // Set potential colliders to all enemies
+        int colliderCount = ps.trigger.colliderCount;
+        List<GameObject> enemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy"));
+        int i;
+        for (i = 0; i < enemies.Count; i++) {
+            if (i < colliderCount)
+                ps.trigger.SetCollider(i, enemies[i].GetComponent<Collider>());
+            else
+                ps.trigger.AddCollider(enemies[i].GetComponent<Collider>());
+        }
+
+        if (i < colliderCount) {
+            for (int y = colliderCount - 1; y >= i; y--) {
+                ps.trigger.RemoveCollider(y);
+            }
+        }
+    }
+
+    private void ChargeField(AbilityTools abilityTools) {
+        Vector3 aimedPosition = abilityTools.GetAim();
+        Vector3 projectileSpawnPosition = Vector3.MoveTowards(transform.position, aimedPosition, 2f);
+        GameObject chargeFieldProjectile = Instantiate(abilityTools.abilityPrefab, projectileSpawnPosition, Quaternion.identity);
+        ChargeField chargeField = chargeFieldProjectile.GetComponent<ChargeField>();
+        chargeField.Setup(abilityTools);
+        // yeet
+        chargeField.ThrowProjectile(aimedPosition);
     }
 
     /**

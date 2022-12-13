@@ -8,6 +8,7 @@ public class PlayerInventory : MonoBehaviour
 {
     [SerializeField] private int currentCoins;
     private CoinCounter coinCounter;
+    private PlayerHealthBarUI healthBar;
 
     private void Start() {
         coinCounter = GameObject.FindWithTag("MainCanvas").GetComponent<CoinCounter>();
