@@ -14,6 +14,8 @@ public class Abilities : MonoBehaviour {
     public GameObject plasmaBurst;
     public GameObject chargeField;
 
+    public PlayerMovement playerMovement;
+
     private const float DefaultAimDistance = 25;
     private Camera mainCamera;
     [SerializeField] private Vector3 aimedAt;
@@ -44,6 +46,7 @@ public class Abilities : MonoBehaviour {
         else
             // If aimed at nothing, aim some units away from the camera (hopefully this never happens since we have invisible ceilings/walls)
             aimedAt = ray.GetPoint(DefaultAimDistance);
+        playerMovement.SwivelModel(aimedAt);
     }
 
     public Vector3 GetAim() {

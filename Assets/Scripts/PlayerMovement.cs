@@ -8,10 +8,15 @@ public class PlayerMovement : MonoBehaviour
     public float turnSmoothTime = 0.1f;
     public Transform cam;
     public float forceGravity = -18f; // Should be negative
+    // Model animator
+    public Animator animator;
+    // Model
+    public GameObject model;
 
     private float turnSmoothVelocity;
     private float jumpVelocity;
     private PlayerStats playerStats;
+    private bool isFiring;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked; // Lock the mouse cursor when playing!
         playerStats = gameObject.GetComponent<PlayerStats>();
         jumpVelocity = 0f;
+        isFiring = false;
     }
 
     // Update is called once per frame
@@ -28,9 +34,13 @@ public class PlayerMovement : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
-        // If user is moving
-        if (direction.magnitude >= 0.1f)
-        {
+        TrySetBool("grounded", controller.isGrounded);
+
+        if (direction.magnitude < 0.1f)
+            TrySetBool("moving", false);
+        if (direction.magnitude >= 0.1f) {
+            SetRunDirection(direction);
+            TrySetBool("moving", true);
             //We can use the Atan 2 function to get the angle of the x-axis, but assumes that we start at 0 degrees.
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y; // Allows the player to rotate. Do not get rid of this variable, as variable angle is dependent on this.
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime); // Helps smooth out player rotation. Also needed for player rotation.
@@ -43,10 +53,38 @@ public class PlayerMovement : MonoBehaviour
         {
             controller.Move(HandleJumpMovement(Vector3.zero) * Time.deltaTime);
         }
-        
-
     }
-    
+
+    private void TrySetBool(string name, bool value) {
+        if (animator.GetBool(name) != value)
+            animator.SetBool(name, value);
+    }
+
+    public void SwivelModel(Vector3 towards) {
+        towards.y = transform.position.y;
+        model.transform.LookAt(towards);
+        if (isFiring) {
+            Vector3 euler = model.transform.rotation.eulerAngles;
+            euler.y = euler.y + 15f;
+            model.transform.rotation = Quaternion.Euler(euler);
+        }
+    }
+
+    public void SetIsFiring(bool value) {
+        TrySetBool("isFiring", value);
+        isFiring = value;
+    }
+
+    private void SetRunDirection(Vector3 direction) {
+        // We don't have strafing animations so we can choose forward or back :(
+        Vector3 facingWorld = model.transform.forward;
+        Vector3 runningWorld = model.transform.TransformVector(direction);
+        if (Vector3.Angle(facingWorld, runningWorld) >= 95)
+            TrySetBool("lookingForward", false);
+        else
+            TrySetBool("lookingForward", true);
+    }
+
     private Vector3 HandleJumpMovement(Vector3 moveDir) {
         // moveDir should already be normalized and player speed should be factored in already
         // Reset jump velocity when we hit ground
@@ -54,8 +92,10 @@ public class PlayerMovement : MonoBehaviour
             jumpVelocity = 0f;
 
         // Jump (change this logic if we ever add something like double jump)
-        if (controller.isGrounded && Input.GetButtonDown("Jump"))
+        if (controller.isGrounded && Input.GetButtonDown("Jump")) {
             jumpVelocity = Mathf.Sqrt(playerStats.jumpPower);
+            animator.SetTrigger("startJump");
+        }
 
         jumpVelocity += forceGravity * Time.deltaTime;
         moveDir.y = jumpVelocity;
