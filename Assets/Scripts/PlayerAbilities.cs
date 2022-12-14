@@ -19,12 +19,15 @@ public class PlayerAbilities : MonoBehaviour
     private AllAbilities primaryAbility; // Ability to use on left click
     private AllAbilities secondaryAbility; // Ability to use on right click
     public List<AllAbilities> passiveAbilities; // Abilities that are having some passive effect
+    public PlayerMovement playerMovement;
 
     private AbilityCooldowns cooldowns;
     private bool abilityCooldownsLoaded;
     private AbilityTools primaryAbilityTools; // GameObject containing any effects/colliders/etc of the primary ability
     private AbilityTools secondaryAbilityTools; // Same as above but for secondary ability
     private Abilities abilities; // Reference to Abilities script
+    private bool stopFiringNextChance; // Stop firing animation when user is not holding the mouse anymore
+    private float stopFiringBuffer;
 
     private const string IconBasePath = "Skill_Icons/";
 
@@ -42,6 +45,8 @@ public class PlayerAbilities : MonoBehaviour
             primaryAbility = LoadoutPersist.Instance.GetLeft();
             secondaryAbility = LoadoutPersist.Instance.GetRight();
         }
+
+        stopFiringNextChance = false;
         abilities = gameObject.GetComponentInChildren<Abilities>();
         primaryAbilityTools = abilities.GetAbilityGameObject(primaryAbility).GetComponent<AbilityTools>();
         secondaryAbilityTools = abilities.GetAbilityGameObject(secondaryAbility).GetComponent<AbilityTools>();
@@ -52,6 +57,7 @@ public class PlayerAbilities : MonoBehaviour
     private void Update() {
         if (!abilityCooldownsLoaded || Time.timeScale == 0)
             return;
+        bool noInput = !(Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse1));
         if (Input.GetKey(KeyCode.Mouse0) && cooldowns.GetAbilityReady(AbilityCooldowns.AbilitySlots.LeftSlot)) {
             // Activate left click ability
             cooldowns.StartCooldown(AbilityCooldowns.AbilitySlots.LeftSlot, primaryAbilityTools.cooldown, !primaryAbilityTools.holdButtonAbility, primaryAbilityTools.manualCooldown);
@@ -60,6 +66,14 @@ public class PlayerAbilities : MonoBehaviour
             // Activate right click ability
             cooldowns.StartCooldown(AbilityCooldowns.AbilitySlots.RightSlot, secondaryAbilityTools.cooldown, !secondaryAbilityTools.holdButtonAbility, secondaryAbilityTools.manualCooldown);
             ActivateAbility(secondaryAbility, secondaryAbilityTools, AbilityCooldowns.AbilitySlots.RightSlot);
+        }
+
+        if (stopFiringNextChance) {
+            stopFiringBuffer -= Time.deltaTime;
+            if (stopFiringBuffer <= 0f && noInput) {
+                playerMovement.SetIsFiring(false);
+                stopFiringNextChance = false;
+            }
         }
     }
 
@@ -97,23 +111,33 @@ public class PlayerAbilities : MonoBehaviour
         }
     }
 
-    IEnumerator EnableForTime(float time, GameObject target, AbilityTools tools) {
+    IEnumerator EnableForTime(float time, GameObject target, AbilityTools tools, bool stopFiringEnd) {
         // Activate object for some set time
+        playerMovement.SetIsFiring(true);
         if (!target.activeInHierarchy)
         {
             target.SetActive(true);
             tools.IncrementActivationId();
+            if (stopFiringEnd)
+                SetStopFiring(time);
             yield return new WaitForSeconds(time);
         }
         target.SetActive(false);
     }
 
+    private void SetStopFiring(float buffer) {
+        stopFiringNextChance = true;
+        if (buffer > stopFiringBuffer)
+            stopFiringBuffer = buffer;
+    }
+
     private void Flamethrower(AbilityTools abilityTools) {
-        StartCoroutine(EnableForTime(abilityTools.duration, abilityTools.gameObject, abilityTools));
+        StartCoroutine(EnableForTime(abilityTools.duration, abilityTools.gameObject, abilityTools, true));
     }
 
     private void PiercingLaser(AbilityTools abilityTools) {
-        StartCoroutine(EnableForTime(5.0f, abilityTools.gameObject, abilityTools));
+        StartCoroutine(EnableForTime(5.0f, abilityTools.gameObject, abilityTools, false));
+        SetStopFiring(.5f);
         // Spawn the trail (spawn as its own object, not as a child)
         Transform abilityToolsTransform = abilityTools.transform;
         GameObject trail = Instantiate(abilityTools.abilityPrefab, abilityToolsTransform.position, abilityToolsTransform.rotation);
@@ -130,6 +154,8 @@ public class PlayerAbilities : MonoBehaviour
     private void RapidFire(AbilityTools abilityTools) {
         // RapidFire is just always enabled, no need to use EnableForTime coroutine
         // Spawn a bullet and fire it off
+        playerMovement.SetIsFiring(true);
+        SetStopFiring(.5f);
         Transform abilityToolsTransform = abilityTools.transform;
         Vector3 abilityToolsOldPos = abilityToolsTransform.position;
         abilityToolsTransform.LookAt(abilityTools.GetAim());
@@ -140,6 +166,8 @@ public class PlayerAbilities : MonoBehaviour
     }
 
     private void Electrorang(AbilityTools abilityTools, AbilityCooldowns.AbilitySlots slot) {
+        playerMovement.SetIsFiring(true);
+        SetStopFiring(.5f);
         // Instantiate Electrorang and position it slightly in front of the player
         Transform abilityToolsTransform = abilityTools.transform;
         GameObject electrorang = Instantiate(abilityTools.abilityPrefab, abilityToolsTransform.position, abilityToolsTransform.rotation);
@@ -172,6 +200,8 @@ public class PlayerAbilities : MonoBehaviour
     }
 
     private void ChargeField(AbilityTools abilityTools) {
+        playerMovement.SetIsFiring(true);
+        SetStopFiring(.5f);
         Vector3 aimedPosition = abilityTools.GetAim();
         Vector3 projectileSpawnPosition = Vector3.MoveTowards(transform.position, aimedPosition, 2f);
         GameObject chargeFieldProjectile = Instantiate(abilityTools.abilityPrefab, projectileSpawnPosition, Quaternion.identity);
