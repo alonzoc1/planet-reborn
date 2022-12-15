@@ -19,7 +19,8 @@ public class VictoryConditions : MonoBehaviour
     public enum SceneLibrary { // These MUST be in the same order as each scene's index in Build Settings
         MainMenu,
         Level1,
-        Shop
+        Shop,
+        Level1Revamp
     }
 
     public VictoryModes victoryMode = VictoryModes.None; // Change this in editor per scene

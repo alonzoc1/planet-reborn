@@ -5270,7 +5270,7 @@ MonoBehaviour:
   maxHealth: 100
   state: 0
   currentHealth: 100
-  jumpPower: 50
+  jumpPower: 100
   healthbar: {fileID: 0}
 --- !u!114 &1713402681
 MonoBehaviour:
