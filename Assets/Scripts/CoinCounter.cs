@@ -14,16 +14,24 @@ public class CoinCounter : MonoBehaviour
 
 	private void Start() {
 		currencyPersist = CurrencyPersist.Instance;
-		SetCountUI(currencyPersist.GetCoins());
+		if (currencyPersist == null)
+			Debug.Log("CurrencyPersist not found, probably because we didn't start from the start menu :)");
+		else
+			SetCountUI(currencyPersist.GetCoins());
 	}
 
 	public void UpdateCount(int value) {
-		currencyPersist.SetCoins(value);
+		if (currencyPersist != null)
+			currencyPersist.SetCoins(value);
 		SetCountUI(value);
 	}
 
 	public void IncrementCoins() {
-		SetCountUI(currencyPersist.IncrementCoins());
+		if (currencyPersist != null)
+			SetCountUI(currencyPersist.IncrementCoins());
+		else {
+			Debug.Log("CurrencyPersist not found, not incrementing coin...");
+		}
 	}
 
 	private void SetCountUI(int value) {
