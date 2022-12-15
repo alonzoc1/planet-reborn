@@ -20,7 +20,8 @@ public class VictoryConditions : MonoBehaviour
         MainMenu,
         Level1,
         Shop,
-        Level1Revamp
+        Level1Revamp,
+        Victory
     }
 
     public VictoryModes victoryMode = VictoryModes.None; // Change this in editor per scene

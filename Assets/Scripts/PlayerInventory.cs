@@ -8,7 +8,7 @@ public class PlayerInventory : MonoBehaviour
 {
     private CoinCounter coinCounter;
     private PlayerHealthBarUI healthBar;
-    private CurrencyPersist currencyPersist; // stores our coins
+    private CurrencyPersist currencyPersist; // stores our coins, only exists if starting from Start Menu
 
     private void Start() {
         currencyPersist = CurrencyPersist.Instance;

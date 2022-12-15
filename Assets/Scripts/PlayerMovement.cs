@@ -61,11 +61,12 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void SwivelModel(Vector3 towards) {
-        towards.y = transform.position.y;
+        towards.y = model.transform.position.y; // Don't rotate model to look up/down
         model.transform.LookAt(towards);
         if (isFiring) {
+            // Adjust model slightly since its aim animation is left leaning
             Vector3 euler = model.transform.rotation.eulerAngles;
-            euler.y = euler.y + 15f;
+            euler.y += 15f;
             model.transform.rotation = Quaternion.Euler(euler);
         }
     }
