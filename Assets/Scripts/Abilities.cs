@@ -37,6 +37,21 @@ public class Abilities : MonoBehaviour {
         };
     }
 
+    public void ApplyDamageMod(float damageMod) {
+        var tools = flamethrower.GetComponent<AbilityTools>();
+        tools.damage = (int)Math.Round(tools.damage * damageMod);
+        tools = piercingLaser.GetComponent<AbilityTools>();
+        tools.damage = (int)Math.Round(tools.damage * damageMod);
+        tools = rapidFire.GetComponent<AbilityTools>();
+        tools.damage = (int)Math.Round(tools.damage * damageMod);
+        tools = electrorang.GetComponent<AbilityTools>();
+        tools.damage = (int)Math.Round(tools.damage * damageMod);
+        tools = plasmaBurst.GetComponent<AbilityTools>();
+        tools.damage = (int)Math.Round(tools.damage * damageMod);
+        tools = chargeField.GetComponent<AbilityTools>();
+        tools.damage = (int)Math.Round(tools.damage * damageMod);
+    }
+
     private void Update() {
         // Check what the camera crosshair is aiming at
         Ray ray = mainCamera.ViewportPointToRay(new Vector3(.5f, .5f, 0f));

@@ -34,6 +34,10 @@ public class CoinCounter : MonoBehaviour
 		}
 	}
 
+	public void BuyThing(int cost) {
+		SetCountUI(currencyPersist.PayCoins(cost));
+	}
+
 	private void SetCountUI(int value) {
 		coinCounter.text = LabelBase + value;
 	}
