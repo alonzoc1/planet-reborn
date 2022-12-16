@@ -11,7 +11,8 @@ public class PlayerProjectile : MonoBehaviour {
 
     private Vector3 lastPos;
 
-    public void Go() {
+    public void Go(int newDamage) {
+        damage = newDamage;
         rb.AddForce(transform.forward * force);
         lastPos = transform.position;
     }

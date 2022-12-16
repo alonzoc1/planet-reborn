@@ -14,7 +14,7 @@ public class CurrencyPersist : MonoBehaviour {
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
-        coins = 50; // Start at 0
+        coins = 0; // Start at 0
     }
 
     public int GetCoins() {

@@ -10,6 +10,7 @@ public class ShopPowerup : MonoBehaviour {
     public int cost;
     public Powerup powerup;
     private CoinCounter coins;
+    private bool cubeDead;
 
     public enum Powerup {
         Speed,
@@ -21,10 +22,12 @@ public class ShopPowerup : MonoBehaviour {
     private void Start() {
         rotate = new Vector3(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f)).normalized;
         coins = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<CoinCounter>();
+        cubeDead = false;
     }
 
     private void Update() {
-        powerupCube.transform.Rotate(rotate * (Time.deltaTime * 50f));
+        if (!cubeDead)
+            powerupCube.transform.Rotate(rotate * (Time.deltaTime * 50f));
     }
 
     public void Touched() {
@@ -46,6 +49,8 @@ public class ShopPowerup : MonoBehaviour {
                     PowerupsPersist.Instance.speedBuff = 1.5f;
                     break;
             }
+
+            cubeDead = true;
             Destroy(powerupCube);
         }
     }

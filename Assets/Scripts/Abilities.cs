@@ -68,10 +68,14 @@ public class Abilities : MonoBehaviour {
         return aimedAt;
     }
 
-    public GameObject GetAimedTarget() {
+    public List<GameObject> GetAimedTarget() {
+        List<GameObject> result = new List<GameObject>();
         Ray ray = mainCamera.ViewportPointToRay(new Vector3(.5f, .5f, 0f));
-        if (Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, ~0, QueryTriggerInteraction.Ignore))
-            return hit.collider.gameObject;
-        return null;
+        //if (Physics.RaycastAll(ray, out RaycastHit[] hit, float.MaxValue, ~0, QueryTriggerInteraction.Ignore)) {
+        RaycastHit[] hits = Physics.RaycastAll(ray, 10000f, ~0, QueryTriggerInteraction.Ignore);
+        foreach (RaycastHit hit in hits) {
+            result.Add(hit.collider.gameObject);
+        }
+        return result;
     }
 }

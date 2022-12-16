@@ -19,6 +19,10 @@ public class PowerupsPersist : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
+        Reset();
+    }
+
+    public void Reset() {
         damageBuff = 1f;
         speedBuff = 1f;
         jumpBuff = 1f;
