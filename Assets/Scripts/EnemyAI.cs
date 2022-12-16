@@ -10,6 +10,7 @@ public class EnemyAI : MonoBehaviour
     public LayerMask whatIsGround, whatIsPlayer;
     [Tooltip("How far the AI can search at a time")]
     public float walkPointRange;
+    public GameObject coin;
     // Searching State
     private Vector3 walkPoint;
     private bool walkPointSet;
@@ -155,12 +156,19 @@ public class EnemyAI : MonoBehaviour
     {
         stats.ChangeCurrentHealth(damage * -1);
         if (stats.state == BaseStats.State.Dead)
+        {
             Invoke(nameof(DestroyEnemy), 0.5f);
+            Invoke(nameof(SpawnCoin), 0.5f);
+        }
     }
     private void DestroyEnemy()
     {
         stats.Cleanup();
         Destroy(gameObject);
+    }
+    public void SpawnCoin()
+    {
+        Instantiate(coin, transform.position, Quaternion.identity);
     }
 
     public void Anger() {
