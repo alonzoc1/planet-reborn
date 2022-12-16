@@ -172,7 +172,9 @@ public class EnemyAI : MonoBehaviour
     }
     public void SpawnCoin()
     {
-        Instantiate(coin, transform.position, Quaternion.identity);
+        // Spawn a coin a little above the enemy
+        Vector3 coinSpawn = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+        Instantiate(coin, coinSpawn, Quaternion.identity);
     }
 
     public void Anger() {
