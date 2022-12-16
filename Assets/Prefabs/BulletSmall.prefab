@@ -355,7 +355,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifespan: 5
-  damage: 5
+  damage: 20
   force: 8000
   rb: {fileID: 4334526575606670353}
 --- !u!54 &4334526575606670353

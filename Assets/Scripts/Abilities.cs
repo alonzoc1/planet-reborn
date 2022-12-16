@@ -37,6 +37,21 @@ public class Abilities : MonoBehaviour {
         };
     }
 
+    public void ApplyDamageMod(float damageMod) {
+        var tools = flamethrower.GetComponent<AbilityTools>();
+        tools.damage = (int)Math.Round(tools.damage * damageMod);
+        tools = piercingLaser.GetComponent<AbilityTools>();
+        tools.damage = (int)Math.Round(tools.damage * damageMod);
+        tools = rapidFire.GetComponent<AbilityTools>();
+        tools.damage = (int)Math.Round(tools.damage * damageMod);
+        tools = electrorang.GetComponent<AbilityTools>();
+        tools.damage = (int)Math.Round(tools.damage * damageMod);
+        tools = plasmaBurst.GetComponent<AbilityTools>();
+        tools.damage = (int)Math.Round(tools.damage * damageMod);
+        tools = chargeField.GetComponent<AbilityTools>();
+        tools.damage = (int)Math.Round(tools.damage * damageMod);
+    }
+
     private void Update() {
         // Check what the camera crosshair is aiming at
         Ray ray = mainCamera.ViewportPointToRay(new Vector3(.5f, .5f, 0f));
@@ -53,10 +68,14 @@ public class Abilities : MonoBehaviour {
         return aimedAt;
     }
 
-    public GameObject GetAimedTarget() {
+    public List<GameObject> GetAimedTarget() {
+        List<GameObject> result = new List<GameObject>();
         Ray ray = mainCamera.ViewportPointToRay(new Vector3(.5f, .5f, 0f));
-        if (Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, ~0, QueryTriggerInteraction.Ignore))
-            return hit.collider.gameObject;
-        return null;
+        //if (Physics.RaycastAll(ray, out RaycastHit[] hit, float.MaxValue, ~0, QueryTriggerInteraction.Ignore)) {
+        RaycastHit[] hits = Physics.RaycastAll(ray, 10000f, ~0, QueryTriggerInteraction.Ignore);
+        foreach (RaycastHit hit in hits) {
+            result.Add(hit.collider.gameObject);
+        }
+        return result;
     }
 }
