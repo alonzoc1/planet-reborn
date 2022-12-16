@@ -142,6 +142,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   walkPointRange: 30
+  coin: {fileID: 3920132298787143748, guid: cb6cdbdba0cb4784db32a77c57c69928, type: 3}
   weapon: {fileID: 0}
 --- !u!195 &8417308258820503593
 NavMeshAgent:
