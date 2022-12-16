@@ -1051,7 +1051,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 763892efc2a33284a9f6a81e4e175024, type: 2}
+  - {fileID: 2100000, guid: cc95f9e243f0a0446ad9616930b9edd6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4791,6 +4791,8 @@ MonoBehaviour:
   nextScene: 3
   thisScene: 2
   defeatNumber: 5
+  surviveTime: 0
+  teleporter: {fileID: 0}
 --- !u!4 &2011216358
 Transform:
   m_ObjectHideFlags: 0

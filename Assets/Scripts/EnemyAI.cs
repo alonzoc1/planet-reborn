@@ -25,8 +25,10 @@ public class EnemyAI : MonoBehaviour
     private Dictionary<PlayerAbilities.AllAbilities, int> recentDamageTaken;
     private Dictionary<PlayerAbilities.AllAbilities, AbilityTools> collidingWith;
     private float damageTimeBuffer;
+    private bool angry;
 
     private void Awake() {
+        angry = false;
         recentDamageTaken = new Dictionary<PlayerAbilities.AllAbilities, int>();
         collidingWith = new Dictionary<PlayerAbilities.AllAbilities, AbilityTools>();
         damageTimeBuffer = 0f;
@@ -43,6 +45,8 @@ public class EnemyAI : MonoBehaviour
         //Check for sight and attack range
         playerInSight = Physics.CheckSphere(transform.position, stats.sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, stats.attackRange, whatIsPlayer);
+        if (angry)
+            playerInSight = true;
         if (!playerInSight && !playerInAttackRange) Searching();
         if (playerInSight && !playerInAttackRange) ChasePlayer();
         if (playerInAttackRange && playerInSight) StartCoroutine(AttackPlayer());
@@ -157,5 +161,11 @@ public class EnemyAI : MonoBehaviour
     {
         stats.Cleanup();
         Destroy(gameObject);
+    }
+
+    public void Anger() {
+        // Chase player regardless of sight
+        angry = true;
+        Debug.Log("Angry!");
     }
 }

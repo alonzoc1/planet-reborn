@@ -140,7 +140,7 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 128
-  walkPointRange: 10
+  walkPointRange: 30
   weapon: {fileID: 0}
 --- !u!195 &8417308258820503593
 NavMeshAgent:
