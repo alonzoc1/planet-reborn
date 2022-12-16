@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class CubeSpawnZone : SpawnZone {
 
-    [SerializeField]
-    bool surfaceOnly;
+    public bool surfaceOnly;
 
     public override Vector3 SpawnPoint {
         get {

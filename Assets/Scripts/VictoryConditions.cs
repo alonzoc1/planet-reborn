@@ -26,11 +26,25 @@ public class VictoryConditions : MonoBehaviour
 
     public VictoryModes victoryMode = VictoryModes.None; // Change this in editor per scene
     public SceneLibrary nextScene;
+    public SceneLibrary thisScene;
     public int defeatNumber = 5;
 
     private int enemyCount = 0;
+    private ObjectiveTrackerUI objectives;
 
     private void OnEnable() {
+        objectives = GameObject.FindGameObjectWithTag("ObjectiveTracker").GetComponent<ObjectiveTrackerUI>();
+        switch (thisScene) {
+            case SceneLibrary.Level1:
+                objectives.SetMessage("exit");
+                break;
+            case SceneLibrary.Shop:
+                objectives.SetMessage("shop");
+                break;
+            default:
+                objectives.SetMessage("hide");
+                break;
+        }
         switch (victoryMode) {
             case VictoryModes.DefeatAll:
                 EventManager.OnEnemyDeath += EnemyDeath;
