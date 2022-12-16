@@ -53,7 +53,7 @@ MonoBehaviour:
   duration: 0
   holdButtonAbility: 1
   manualCooldown: 0
-  iconName: RapidFire
+  iconName: rapid-fire
   abilityPrefab: {fileID: 8703791535470918648, guid: 85decbd6ac43a164e9842c3d7f9b6c06, type: 3}
   speed: 0
   particleCollider: {fileID: 0}
@@ -4952,7 +4952,7 @@ MonoBehaviour:
   duration: 0
   holdButtonAbility: 0
   manualCooldown: 0
-  iconName: square
+  iconName: plasma-burst
   abilityPrefab: {fileID: 0}
   speed: 0
   particleCollider: {fileID: 1317677131}
@@ -5054,7 +5054,7 @@ MonoBehaviour:
   duration: 0
   holdButtonAbility: 0
   manualCooldown: 1
-  iconName: square
+  iconName: electrorang
   abilityPrefab: {fileID: 1622290130037268022, guid: a1209e42c27b4d4408ffda6d40978d13, type: 3}
   speed: 25
   particleCollider: {fileID: 0}
@@ -5112,7 +5112,7 @@ MonoBehaviour:
   duration: 0
   holdButtonAbility: 0
   manualCooldown: 0
-  iconName: PrecisionAim
+  iconName: precision-aim
   abilityPrefab: {fileID: 8279439706951382942, guid: ffbc88411f67b424eba6ce2f195828fe, type: 3}
   speed: 0
   particleCollider: {fileID: 0}
@@ -5170,7 +5170,7 @@ MonoBehaviour:
   duration: 6
   holdButtonAbility: 0
   manualCooldown: 0
-  iconName: square
+  iconName: charge-field
   abilityPrefab: {fileID: 68604340315218120, guid: cb8346c85a40f3c4a950b2d29ca26982, type: 3}
   speed: 0
   particleCollider: {fileID: 0}
@@ -5647,7 +5647,7 @@ MonoBehaviour:
   duration: 2.5
   holdButtonAbility: 0
   manualCooldown: 0
-  iconName: flamethrower_icon
+  iconName: flamethrower
   abilityPrefab: {fileID: 0}
   speed: 0
   particleCollider: {fileID: 0}
