@@ -41,7 +41,7 @@ public class AbilityTools : MonoBehaviour {
         return abilities.GetAim();
     }
 
-    public GameObject GetAimedTarget() {
+    public List<GameObject> GetAimedTarget() {
         return abilities.GetAimedTarget();
     }
 

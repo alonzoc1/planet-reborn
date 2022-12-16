@@ -146,9 +146,12 @@ public class PlayerAbilities : MonoBehaviour
         int trailResolution = (int)(Vector3.Distance(trail.transform.position, destination) / 20) + 1;
         StartCoroutine(HitscanTrailMove(trail, destination, trailResolution));
         // Do damage if the hitscan is a hit
-        GameObject aimedTarget = abilityTools.GetAimedTarget();
-        if (!ReferenceEquals(aimedTarget, null) && aimedTarget.CompareTag("Enemy")) // Faster than != null I guess :^)
-            aimedTarget.GetComponent<EnemyAI>().TakeDamage(abilityTools.damage);
+        List<GameObject> aimedTargets = abilityTools.GetAimedTarget();
+        foreach (GameObject target in aimedTargets) {
+            if (!ReferenceEquals(target, null) && target.CompareTag("Enemy")) // Faster than != null I guess :^)
+                target.GetComponent<EnemyAI>().TakeDamage(abilityTools.damage);
+        }
+
     }
 
     private void RapidFire(AbilityTools abilityTools) {
@@ -162,7 +165,7 @@ public class PlayerAbilities : MonoBehaviour
         abilityToolsTransform.Translate(Vector3.forward * 2f);
         GameObject bullet = Instantiate(abilityTools.abilityPrefab, abilityToolsTransform.position, abilityToolsTransform.rotation);
         abilityToolsTransform.position = abilityToolsOldPos;
-        bullet.GetComponent<PlayerProjectile>().Go();
+        bullet.GetComponent<PlayerProjectile>().Go(abilityTools.damage);
     }
 
     private void Electrorang(AbilityTools abilityTools, AbilityCooldowns.AbilitySlots slot) {

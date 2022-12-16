@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -26,5 +27,17 @@ public class MainMenu : MonoBehaviour {
     public void SetVolume() {
         OptionsPersist.Instance.volume = volumeSlider.value;
         Camera.main.gameObject.GetComponent<AudioSource>().volume = OptionsPersist.Instance.volume;
+    }
+
+    public void SetSlider() {
+        volumeSlider.value = OptionsPersist.Instance.volume;
+    }
+
+    private void Start() {
+        // Reset persistents if they exist
+        if (CurrencyPersist.Instance != null)
+            CurrencyPersist.Instance.SetCoins(0);
+        if (PowerupsPersist.Instance != null)
+            PowerupsPersist.Instance.Reset();
     }
 }
