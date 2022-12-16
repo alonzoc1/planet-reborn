@@ -26,9 +26,12 @@ public class EnemyAI : MonoBehaviour
     private Dictionary<PlayerAbilities.AllAbilities, AbilityTools> collidingWith;
     private float damageTimeBuffer;
     private bool angry;
+    private AudioSource soundOnHit;
 
     private void Awake() {
         angry = false;
+        soundOnHit = gameObject.GetComponent<AudioSource>();
+        soundOnHit.volume = OptionsPersist.Instance.volume * .1f; // make this quieter
         recentDamageTaken = new Dictionary<PlayerAbilities.AllAbilities, int>();
         collidingWith = new Dictionary<PlayerAbilities.AllAbilities, AbilityTools>();
         damageTimeBuffer = 0f;
@@ -154,6 +157,7 @@ public class EnemyAI : MonoBehaviour
     public void TakeDamage(int damage)
     {
         stats.ChangeCurrentHealth(damage * -1);
+        soundOnHit.Play();
         if (stats.state == BaseStats.State.Dead)
             Invoke(nameof(DestroyEnemy), 0.5f);
     }

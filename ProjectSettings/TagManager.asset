@@ -18,6 +18,7 @@ TagManager:
   - DamageSourceProjectile
   - GameOverUI
   - ObjectiveTracker
+  - volume
   layers:
   - Default
   - TransparentFX
