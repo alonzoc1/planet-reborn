@@ -7731,7 +7731,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.12945838, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -8679,7 +8679,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.12945838, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -9472,7 +9472,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1099099599}
-  m_LocalRotation: {x: 0.21201202, y: 1.9683227e-10, z: 4.310137e-11, w: 0.9772671}
+  m_LocalRotation: {x: 0.21201204, y: 1.7522142e-10, z: 3.8418865e-11, w: 0.9772671}
   m_LocalPosition: {x: -227, y: 12.43, z: -160}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -11265,7 +11265,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.12945838, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -11281,7 +11281,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1265988477}
-  m_LocalRotation: {x: 0.212012, y: -0, z: -0, w: 0.9772671}
+  m_LocalRotation: {x: 0.21201201, y: -0, z: -0, w: 0.9772671}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -14676,7 +14676,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.12945838, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -18941,7 +18941,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 784818783, guid: 04d857657bb64434db213293631cfe0d, type: 3}
       propertyPath: iconName
-      value: flamethrower_icon
+      value: flamethrower
       objectReference: {fileID: 0}
     - target: {fileID: 784818783, guid: 04d857657bb64434db213293631cfe0d, type: 3}
       propertyPath: holdButtonAbility
@@ -18961,7 +18961,7 @@ PrefabInstance:
       objectReference: {fileID: 242742714}
     - target: {fileID: 1799605141, guid: 04d857657bb64434db213293631cfe0d, type: 3}
       propertyPath: iconName
-      value: PrecisionAim
+      value: precision-aim
       objectReference: {fileID: 0}
     - target: {fileID: 1945878209718047070, guid: 04d857657bb64434db213293631cfe0d, type: 3}
       propertyPath: m_Name
