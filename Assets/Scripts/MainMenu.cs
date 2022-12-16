@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour {
     public TMP_Dropdown leftDropdown;
     public TMP_Dropdown rightDropdown;
+    public Slider volumeSlider;
     
     public void PlayGame()
     {
@@ -19,5 +21,10 @@ public class MainMenu : MonoBehaviour {
     {
         Debug.Log("Quit");
         Application.Quit();
+    }
+
+    public void SetVolume() {
+        OptionsPersist.Instance.volume = volumeSlider.value;
+        Camera.main.gameObject.GetComponent<AudioSource>().volume = OptionsPersist.Instance.volume;
     }
 }

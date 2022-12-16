@@ -80,7 +80,10 @@ public class VictoryConditions : MonoBehaviour
                 Debug.LogWarning("Victory Mode not set... See GameManager object and set VictoryConditions");
                 break;
         }
-
+        // This shouldn't be here but we're in crunch time :) - Alonzo
+        if (OptionsPersist.Instance != null) {
+            Camera.main.gameObject.GetComponent<AudioSource>().volume = OptionsPersist.Instance.volume;
+        }
     }
 
     private void OnDisable() {
