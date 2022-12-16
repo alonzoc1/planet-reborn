@@ -16,7 +16,15 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 8e885bf99a7b2c84cba4448e0f035841
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 240025f6016e0e34eb947b07c3a6934f
+    m_Address: Assets/Sounds/precisionFire.ogg
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 15a4fa39fc8a2fa42b68f6b11143ae74
+    m_Address: Assets/Sounds/hitConfirm.ogg
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 3da816c7ba3fa1c45a737151fe759947, type: 2}
   m_SchemaSet:
