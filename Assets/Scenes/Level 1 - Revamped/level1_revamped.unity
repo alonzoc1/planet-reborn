@@ -475,7 +475,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4297725522754886363, guid: bdec646c66d61b943a4f8038f1223665, type: 3}
       propertyPath: numEnemies
-      value: 5
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4297725522754886363, guid: bdec646c66d61b943a4f8038f1223665, type: 3}
       propertyPath: enemyPrefab
@@ -1531,7 +1531,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4297725522754886363, guid: bdec646c66d61b943a4f8038f1223665, type: 3}
       propertyPath: numEnemies
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4297725522754886363, guid: bdec646c66d61b943a4f8038f1223665, type: 3}
       propertyPath: enemyPrefab
@@ -7666,7 +7666,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4297725522754886363, guid: bdec646c66d61b943a4f8038f1223665, type: 3}
       propertyPath: numEnemies
-      value: 8
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 4297725522754886363, guid: bdec646c66d61b943a4f8038f1223665, type: 3}
       propertyPath: enemyPrefab
@@ -7747,7 +7747,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 912224713}
-  m_LocalRotation: {x: 0.19424808, y: -0.000000018870892, z: 0.0000000037368117, w: 0.98095244}
+  m_LocalRotation: {x: 0.19424808, y: 0.000000018870892, z: -0.0000000037368117, w: 0.98095244}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8695,7 +8695,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1027343534}
-  m_LocalRotation: {x: 0.22975291, y: 0.000000016746089, z: -0.0000000039532155, w: 0.973249}
+  m_LocalRotation: {x: 0.22975291, y: -0.000000016746096, z: 0.0000000039532173, w: 0.973249}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9472,7 +9472,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1099099599}
-  m_LocalRotation: {x: 0.21201204, y: 1.7522142e-10, z: 3.8418865e-11, w: 0.9772671}
+  m_LocalRotation: {x: 0.21201204, y: -1.7522142e-10, z: -3.8418865e-11, w: 0.9772671}
   m_LocalPosition: {x: -227, y: 12.43, z: -160}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -14177,6 +14177,10 @@ PrefabInstance:
     - target: {fileID: 4297725522754886361, guid: bdec646c66d61b943a4f8038f1223665, type: 3}
       propertyPath: m_Name
       value: Spawner (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297725522754886363, guid: bdec646c66d61b943a4f8038f1223665, type: 3}
+      propertyPath: numEnemies
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4297725522754886363, guid: bdec646c66d61b943a4f8038f1223665, type: 3}
       propertyPath: enemyPrefab
